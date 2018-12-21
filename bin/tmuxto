@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+function send-command {
+    echo "$4"
+    tmux -L "$1" select-window -t "$1":"$2"
+    tmux -L "$1" send-keys -t "$3" C-c
+    tmux -L "$1" send-keys -t "$3" "$4" enter
+}
+
+function create-session {
+    tmux -L "$1" new-session -d -s "$1" -n "shell"
+    tmux -L "$1" source-file "$HOME/.tmux/tmux-$1.conf"
+}
+
+function attach-to-session {
+    tmux -L "$1" attach-session -t "$1"
+}
+
+function kill-session {
+    tmux -L "$1" kill-session -t "$1"
+}
+
+case "$1" in
+    huddle)
+        cd ~/projects/huddlebeam ;;
+    *)
+        cd ~/projects/$1 ;;
+esac
+
+args=$2
+for (( i=0; i<${#args}; i++ )); do
+    arg=${args:$i:1}
+
+    case "$arg" in
+        a) # attach
+            attach-to-session "$1" ;;
+        s) # start
+            create-session "$1" ;;
+        k) # kill
+            kill-session "$1" ;;
+        r) # restart
+            kill-session "$1"
+            create-session "$1" ;;
+        e) # exec
+            send-command $1 $3 $4 "$5" ;;
+    esac
+done;
