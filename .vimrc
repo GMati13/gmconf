@@ -115,4 +115,7 @@
 
     " Drop buffers
     command! BD %bd|e#
+
+    " realtime update
+    command! Updatable set autoread | au CursorHold * checktime | call feedkeys("lh")
 " }}}
