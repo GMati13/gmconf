@@ -10,6 +10,7 @@ case "$1" in
         git clone https://github.com/shikherverma/i3lock-multimonitor.git
         cp -r i3lock-multimonitor ~/.i3
         chmod +x ~/.i3/i3lock-multimonitor/lock
+        cp background.png $HOME/.i3/i3lock-multimonitor/img
         apt install scrot
         ;;
     bin)
