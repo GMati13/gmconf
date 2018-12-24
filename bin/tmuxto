@@ -22,8 +22,10 @@ function kill-session {
 
 case "$1" in
     huddle)
+        mkdir -p ~/projects/huddlebeam
         cd ~/projects/huddlebeam ;;
     *)
+        mkdir -p ~/projects/$1
         cd ~/projects/$1 ;;
 esac
 
