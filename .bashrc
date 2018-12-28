@@ -160,3 +160,6 @@ source $HOME/.bash-git-prompt/gitprompt.sh
 alias lock="~/.i3/i3lock-multimonitor/lock"
 alias suspend="systemctl suspend && ~/.i3/i3lock-multimonitor/lock"
 alias logout="kill -9 -1"
+
+# touch
+alias touch="install -D <(echo '')"

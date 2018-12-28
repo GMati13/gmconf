@@ -26,6 +26,7 @@
         " Theme
         Plug 'cocopon/iceberg.vim'
         Plug 'morhetz/gruvbox'
+        Plug 'ajh17/spacegray.vim'
         " fuzzy finder
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
@@ -43,7 +44,9 @@
 
     " Theme {{{
         set t_Co=256
-        colorscheme iceberg
+        " colorscheme gruvbox
+        " colorscheme iceberg
+        colorscheme spacegray
         set background=dark
     " }}}
 
