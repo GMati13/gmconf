@@ -27,6 +27,7 @@
         Plug 'cocopon/iceberg.vim'
         Plug 'morhetz/gruvbox'
         Plug 'ajh17/spacegray.vim'
+        Plug 'wolf-dog/nighted.vim'
         " fuzzy finder
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
@@ -46,7 +47,8 @@
         set t_Co=256
         " colorscheme gruvbox
         " colorscheme iceberg
-        colorscheme spacegray
+        " colorscheme spacegray
+        colorscheme nighted
         set background=dark
     " }}}
 

@@ -162,4 +162,4 @@ alias suspend="systemctl suspend && ~/.i3/i3lock-multimonitor/lock"
 alias logout="kill -9 -1"
 
 # touch
-alias touch="install -D <(echo '')"
+alias touch="install -m 644 -D <(echo '')"
