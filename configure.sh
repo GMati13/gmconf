@@ -12,6 +12,7 @@ case "$1" in
         chmod +x ~/.i3/i3lock-multimonitor/lock
         cp background.png $HOME/.i3/i3lock-multimonitor/img
         apt install scrot
+        cp qutebrowser.py $HOME/.config/qutebrowser/config.py
         ;;
     bin)
         cp -r bin $HOME
@@ -26,6 +27,9 @@ case "$1" in
         ;;
     bash)
         cp .bashrc $HOME
+        ;;
+    browser)
+        cp qutebrowser.py $HOME/.config/qutebrowser/config.py
         ;;
     i3)
         cp .i3 $HOME/.config/i3/config

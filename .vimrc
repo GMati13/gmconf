@@ -45,10 +45,10 @@
 
     " Theme {{{
         set t_Co=256
-        " colorscheme gruvbox
-        " colorscheme iceberg
-        " colorscheme spacegray
-        colorscheme nighted
+        colorscheme gruvbox
+        "colorscheme iceberg
+        "colorscheme spacegray
+        "colorscheme nighted
         set background=dark
     " }}}
 

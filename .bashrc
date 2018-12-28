@@ -124,6 +124,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export CUSTOM_BIN=$HOME/bin
 export PATH=$PATH:$CUSTOM_BIN
+export PYTHON_BIN=$HOME/.local/bin
+export PATH=$PATH:$PYTHON_BIN
 
 # tmux
 alias tmux="tmux -2"
