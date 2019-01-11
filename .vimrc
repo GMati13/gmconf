@@ -24,10 +24,10 @@
         " Project tree
         Plug 'scrooloose/nerdtree'
         " Theme
-        Plug 'cocopon/iceberg.vim'
         Plug 'morhetz/gruvbox'
-        Plug 'ajh17/spacegray.vim'
-        Plug 'wolf-dog/nighted.vim'
+        "Plug 'cocopon/iceberg.vim'
+        "Plug 'ajh17/spacegray.vim'
+        "Plug 'wolf-dog/nighted.vim'
         " fuzzy finder
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
@@ -36,12 +36,12 @@
         " Git
         Plug 'tpope/vim-fugitive'
     " }}}
+    
+    " Emacs plugin {{{
+        Plug 'jpalardy/vim-slime'
+    " }}}
 
     call plug#end()
-
-    " Git {{{
-        nnoremap <Leader>b :GitBlame<CR>
-    " }}}
 
     " Theme {{{
         set t_Co=256
@@ -69,12 +69,24 @@
     " ALE {{{
         let g:ale_sign_error = '>'
         let g:ale_sign_warning = '>'
+        let b:ale_fixers = ['prettier', 'eslint']
+        let g:ale_fix_on_save = 1
+        augroup FiletypeGroup
+            autocmd!
+            au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+        augroup END
+        let b:ale_linter_aliases = ['css', 'javascript']
+        let b:ale_linters = ['stylelint', 'eslint']
     " }}}
 
     " FZF {{{
         command! -bang -nargs=* Ag call fzf#vim#grep('ag --nogroup --column --color ^', 1)
         nmap <leader>p :FZF<CR>
         nmap <leader>ag :Ag<CR>
+    " }}}
+    
+    " YCM {{{
+        let g:ycm_show_diagnostic_ui = 0
     " }}}
 " }}}
 
