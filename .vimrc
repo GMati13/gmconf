@@ -88,6 +88,11 @@
     " YCM {{{
         let g:ycm_show_diagnostic_ui = 0
     " }}}
+
+    " REPL (vim-slime) {{{
+        let g:slime_target = "tmux"
+        let g:slime_paste_file = "$HOME/.slime_paste"
+    " }}}
 " }}}
 
 " Common {{{
