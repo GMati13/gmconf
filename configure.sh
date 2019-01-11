@@ -38,5 +38,8 @@ case "$1" in
         chmod +x ~/.i3/i3lock-multimonitor/lock
         apt install scrot
         ;;
+    i3-config)
+        cp .i3 $HOME/.config/i3/config
+        ;;
 esac;
 
