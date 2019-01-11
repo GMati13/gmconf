@@ -1,1 +1,1 @@
-~/.local/bin/qutebrowser --enable-webengine-inspector "$1"
+~/.local/bin/qutebrowser --enable-webengine-inspector "$*"
