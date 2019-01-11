@@ -165,3 +165,9 @@ alias logout="kill -9 -1"
 
 # touch
 alias touch="install -m 644 -D <(echo '')"
+
+# translate
+alias translate='trans -e google -t ru -show-original n -show-translation-phonetics n -show-languages n -show-prompt-message n -show-translation n -show-dictionary n'
+
+# clipboard
+alias xclip="xclip -selection clipboard"
