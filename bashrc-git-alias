@@ -1,0 +1,19 @@
+alias gcl="git clone"
+
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gitadog="git log --all --decorate --oneline --graph"
+alias gd="git diff"
+
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias grh="git reset --hard"
+alias gr="git reset"
+
+alias gp="git push"
+alias gph="git push origin HEAD"
+alias gpl="git pull"
+alias gplh="git pull origin HEAD"
+
+alias gpatch="patch -p1 -i"
