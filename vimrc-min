@@ -1,0 +1,51 @@
+" Global variables {{{
+    " leader key
+    let mapleader = " "
+" }}}
+
+" Common {{{
+    " Clipboard
+    set clipboard=unnamed
+
+    " Swap files
+    set noswapfile
+    
+    " Folding
+    set foldenable
+    set foldmethod=syntax
+
+    " Numbers
+    set number relativenumber
+    augroup numbertoggle
+      autocmd!
+      autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+      autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    augroup END
+    set cursorline
+    
+    " Indent
+    set expandtab
+    set shiftwidth=4
+    set softtabstop=4
+    autocmd FileType html,css setlocal shiftwidth=2 tabstop=2
+    set smartindent
+    set autoindent
+    map <F7> mzgg=G`z
+
+    " Tabs
+    nmap <c-t>n :tabnew<CR>
+    nmap <c-t>q :tabclose<CR>
+    nmap <c-t>h :tabprevious<CR>
+    nmap <c-t>j :tabnext<CR>
+    nmap <c-t>k :tabprevious<CR>
+    nmap <c-t>l :tabnext<CR>
+
+    " search
+    nmap <leader><leader> :noh<cr>
+
+    " Drop buffers
+    command! BD %bd|e#
+
+    " realtime update
+    command! Updatable set autoread | au CursorHold * checktime | call feedkeys("lh")
+" }}}
