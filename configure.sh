@@ -1,6 +1,6 @@
 case "$1" in
     install|remove)
-        `dirname $0`/scripts/gmpkg.sh "$1" "$2"
+        `dirname $0`/scripts/gmpkg.sh "$1" "$2" "$3"
         ;;
     vimrc)
         cp `dirname $0`/vimrc-$2 ~/.vimrc
