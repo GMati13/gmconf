@@ -12,9 +12,12 @@ case "$1" in
                     ag)
                         apt install silversearcher-ag
                         ;;
-                *)
-                    echo unknown option \"${*: -1}\"
-                    ;;
+                    ycm)
+                        ~/.vim/plugged/YouCompleteMe/install.py --$4-completer
+                        ;;
+                    *)
+                        echo unknown option \"${*: -1}\"
+                        ;;
                 esac
                 ;;
             *)
