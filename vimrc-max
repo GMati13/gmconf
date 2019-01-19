@@ -18,6 +18,8 @@
         Plug 'pangloss/vim-javascript'
         Plug 'maxmellon/vim-jsx-pretty'
         Plug 'leafgarland/typescript-vim'
+        " search
+        Plug 'easymotion/vim-easymotion'
     " }}}
 
     " UI {{{
@@ -25,9 +27,6 @@
         Plug 'scrooloose/nerdtree'
         " Theme
         Plug 'morhetz/gruvbox'
-        "Plug 'cocopon/iceberg.vim'
-        "Plug 'ajh17/spacegray.vim'
-        "Plug 'wolf-dog/nighted.vim'
         " fuzzy finder
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
@@ -93,6 +92,10 @@
         let g:slime_target = "tmux"
         let g:slime_paste_file = "$HOME/.slime_paste"
     " }}}
+
+    " easymotion {{{
+        map <leader> <Plug>(easymotion-prefix)
+    " }}}
 " }}}
 
 " Common {{{
@@ -133,6 +136,7 @@
     nmap <c-t>l :tabnext<CR>
 
     " search
+    set incsearch
     nmap <leader><leader> :noh<cr>
 
     " Drop buffers

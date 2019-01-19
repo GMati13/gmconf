@@ -41,6 +41,7 @@
     nmap <c-t>l :tabnext<CR>
 
     " search
+    set incsearch
     nmap <leader><leader> :noh<cr>
 
     " Drop buffers
