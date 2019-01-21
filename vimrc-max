@@ -20,6 +20,8 @@
         Plug 'leafgarland/typescript-vim'
         " search
         Plug 'easymotion/vim-easymotion'
+        Plug 'haya14busa/incsearch.vim'
+        Plug 'haya14busa/incsearch-easymotion.vim'
     " }}}
 
     " UI {{{
@@ -57,7 +59,7 @@
     " }}}
 
     " NERDTree {{{
-        nmap <leader>n :NERDTreeToggle<CR>
+        nmap <leader>n :NERDTreeToggle<cr>
         autocmd StdinReadPre * let s:std_in=1
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
         let g:NERDTreeDirArrowExpandable = '+'
@@ -80,8 +82,8 @@
 
     " FZF {{{
         command! -bang -nargs=* Ag call fzf#vim#grep('ag --nogroup --column --color ^', 1)
-        nmap <leader>p :FZF<CR>
-        nmap <leader>ag :Ag<CR>
+        nmap <leader>p :FZF<cr>
+        nmap <leader>ag :Ag<cr>
     " }}}
     
     " YCM {{{
@@ -93,14 +95,20 @@
         let g:slime_paste_file = "$HOME/.slime_paste"
     " }}}
 
-    " easymotion {{{
+    " (search) easymotion {{{
         map <leader> <Plug>(easymotion-prefix)
+        map <leader>/ <Plug>(incsearch-easymotion-/)
+        map <leader>? <Plug>(incsearch-easymotion-?)
+        map <leader>g/ <Plug>(incsearch-easymotion-stay)
     " }}}
 " }}}
 
 " Common {{{
+    " Transparency
+    hi Normal guibg=NONE ctermbg=NONE
+
     " Clipboard
-    set clipboard=unnamed
+    set clipboard=unnamedplus
 
     " Swap files
     set noswapfile
@@ -128,12 +136,18 @@
     map <F7> mzgg=G`z
 
     " Tabs
-    nmap <c-t>n :tabnew<CR>
-    nmap <c-t>q :tabclose<CR>
-    nmap <c-t>h :tabprevious<CR>
-    nmap <c-t>j :tabnext<CR>
-    nmap <c-t>k :tabprevious<CR>
-    nmap <c-t>l :tabnext<CR>
+    nmap <c-t>n :tabnew<cr>
+    nmap <c-t>q :tabclose<cr>
+    nmap <c-t>h :tabprevious<cr>
+    nmap <c-t>j :tabnext<cr>
+    nmap <c-t>k :tabprevious<cr>
+    nmap <c-t>l :tabnext<cr>
+
+    " Windows
+    nmap <c-h> :wincmd h<cr>
+    nmap <c-j> :wincmd j<cr>
+    nmap <c-k> :wincmd k<cr>
+    nmap <c-l> :wincmd l<cr>
 
     " search
     set incsearch
