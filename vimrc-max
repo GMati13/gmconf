@@ -36,8 +36,10 @@
         Plug 'w0rp/ale'
         " Git
         Plug 'tpope/vim-fugitive'
+        " Status line
+        Plug 'vim-airline/vim-airline'
     " }}}
-    
+
     " Emacs plugin {{{
         Plug 'jpalardy/vim-slime'
     " }}}
@@ -65,6 +67,21 @@
         let g:NERDTreeDirArrowExpandable = '+'
         let g:NERDTreeDirArrowCollapsible = '-'
         let NERDTreeQuitOnOpen=1
+
+        " NERDTress File highlighting
+        function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+            exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='.  a:guifg
+            exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+        endfunction
+
+        call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+        call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+        call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+        call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+        call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+        call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+        call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+        call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
     " }}}
 
     " ALE {{{
@@ -85,7 +102,7 @@
         nmap <leader>p :FZF<cr>
         nmap <leader>ag :Ag<cr>
     " }}}
-    
+
     " YCM {{{
         let g:ycm_show_diagnostic_ui = 0
     " }}}
@@ -101,6 +118,10 @@
         map <leader>? <Plug>(incsearch-easymotion-?)
         map <leader>g/ <Plug>(incsearch-easymotion-stay)
     " }}}
+
+    " Airline {{{
+        let g:airline_powerline_fonts=1
+    " }}}
 " }}}
 
 " Common {{{
@@ -112,7 +133,7 @@
 
     " Swap files
     set noswapfile
-    
+
     " Folding
     set foldenable
     set foldmethod=syntax
@@ -125,7 +146,7 @@
       autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
     augroup END
     set cursorline
-    
+
     " Indent
     set expandtab
     set shiftwidth=4
