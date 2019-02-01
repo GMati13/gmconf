@@ -1,7 +1,5 @@
-" Global variables {{{
-    " leader key
-    let mapleader = " "
-" }}}
+" leader key
+let mapleader = " "
 
 " Plugins {{{
     call plug#begin('~/.vim/plugged')
@@ -12,12 +10,9 @@
         Plug 'Valloric/YouCompleteMe'
         " multicursor
         Plug 'terryma/vim-multiple-cursors'
-        " alignment
-        Plug 'junegunn/vim-easy-align'
         " highlight
         Plug 'pangloss/vim-javascript'
         Plug 'maxmellon/vim-jsx-pretty'
-        Plug 'leafgarland/typescript-vim'
         " search
         Plug 'easymotion/vim-easymotion'
         Plug 'haya14busa/incsearch.vim'
@@ -28,7 +23,7 @@
         " Project tree
         Plug 'scrooloose/nerdtree'
         " Theme
-        Plug 'morhetz/gruvbox'
+        Plug 'cocopon/iceberg.vim'
         " fuzzy finder
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
@@ -38,20 +33,22 @@
         Plug 'tpope/vim-fugitive'
         " Status line
         Plug 'vim-airline/vim-airline'
+        Plug 'edkolev/tmuxline.vim'
     " }}}
 
     " Emacs plugin {{{
         Plug 'jpalardy/vim-slime'
     " }}}
 
+    " Mati Green plugins {{{
+        "Plug '~/.vim/plugged/vimclam'
+    " }}}
+
     call plug#end()
 
     " Theme {{{
         set t_Co=256
-        colorscheme gruvbox
-        "colorscheme iceberg
-        "colorscheme spacegray
-        "colorscheme nighted
+        colorscheme iceberg
         set background=dark
     " }}}
 
@@ -103,30 +100,36 @@
         nmap <leader>ag :Ag<cr>
     " }}}
 
-    " YCM {{{
-        let g:ycm_show_diagnostic_ui = 0
-    " }}}
-
     " REPL (vim-slime) {{{
         let g:slime_target = "tmux"
         let g:slime_paste_file = "$HOME/.slime_paste"
     " }}}
 
     " (search) easymotion {{{
-        map <leader> <Plug>(easymotion-prefix)
-        map <leader>/ <Plug>(incsearch-easymotion-/)
-        map <leader>? <Plug>(incsearch-easymotion-?)
-        map <leader>g/ <Plug>(incsearch-easymotion-stay)
+        map f <Plug>(easymotion-overwin-f)
+        map F <Plug>(easymotion-overwin-f2)
+        map L <Plug>(easymotion-overwin-line)
+        map W <Plug>(easymotion-overwin-w)
+        map / <Plug>(incsearch-easymotion-/)
+        map ? <Plug>(incsearch-easymotion-?)
+        map g/ <Plug>(incsearch-easymotion-stay)
     " }}}
 
     " Airline {{{
         let g:airline_powerline_fonts=1
+    " }}}
+
+    " YCM {{{
+        let g:ycm_show_diagnostics_ui = 0
     " }}}
 " }}}
 
 " Common {{{
     " Transparency
     hi Normal guibg=NONE ctermbg=NONE
+    hi NonText guibg=NONE ctermbg=NONE
+    hi EndOfBuffer guibg=NONE ctermbg=NONE
+    hi SpecialKey guibg=NONE ctermbg=NONE
 
     " Clipboard
     set clipboard=unnamedplus
@@ -155,6 +158,7 @@
     set smartindent
     set autoindent
     map <F7> mzgg=G`z
+    map <F8> :%s/[ ]\{1,\}$//g<cr>
 
     " Tabs
     nmap <c-t>n :tabnew<cr>
