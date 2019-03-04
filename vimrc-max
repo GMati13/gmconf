@@ -3,20 +3,25 @@ let mapleader = " "
 
 " Plugins {{{
     call plug#begin('~/.vim/plugged')
-
     " Code {{{
         " autocomplete
         Plug 'jiangmiao/auto-pairs'
         Plug 'Valloric/YouCompleteMe'
+        Plug 'alcesleo/vim-uppercase-sql'
         " multicursor
         Plug 'terryma/vim-multiple-cursors'
         " highlight
         Plug 'pangloss/vim-javascript'
         Plug 'maxmellon/vim-jsx-pretty'
+        Plug 'mboughaba/i3config.vim', { 'for': 'i3config' }
         " search
         Plug 'easymotion/vim-easymotion'
         Plug 'haya14busa/incsearch.vim'
         Plug 'haya14busa/incsearch-easymotion.vim'
+        " spelling
+        Plug 'reedes/vim-wordy'
+        " docs
+        Plug 'heavenshell/vim-jsdoc'
     " }}}
 
     " UI {{{
@@ -38,10 +43,6 @@ let mapleader = " "
 
     " Emacs plugin {{{
         Plug 'jpalardy/vim-slime'
-    " }}}
-
-    " Mati Green plugins {{{
-        "Plug '~/.vim/plugged/vimclam'
     " }}}
 
     call plug#end()
@@ -117,19 +118,59 @@ let mapleader = " "
 
     " Airline {{{
         let g:airline_powerline_fonts=1
+        let g:airline#extensions#tabline#enabled = 1
     " }}}
 
     " YCM {{{
         let g:ycm_show_diagnostics_ui = 0
     " }}}
+
+    " Wordy (spelling) {{{
+        let g:wordy#ring = [
+          \ 'weak',
+          \ ['being', 'passive-voice', ],
+          \ 'business-jargon',
+          \ 'weasel',
+          \ 'puffery',
+          \ ['problematic', 'redundant', ],
+          \ ['colloquial', 'idiomatic', 'similies', ],
+          \ 'art-jargon',
+          \ ['contractions', 'opinion', 'vague-time', 'said-synonyms', ],
+          \ 'adjectives',
+          \ 'adverbs',
+          \ ]
+        nmap <leader>ww :Wordy problematic<cr>
+        nmap <leader>wn :NoWordy<cr>
+    " }}}
+    
+    " Git (vim-fugitive) {{{
+        nmap <leader>dpp :diffput<cr>
+        nmap <leader>dgg :diffget<cr>
+        nmap <leader>dgh :diffget 2<cr>
+        nmap <leader>dgl :diffget 3<cr>
+    " }}}
+    
+    " JS Docs {{{
+        nmap <silent> <C-d> <Plug>(jsdoc)
+        let g:jsdoc_input_description = 1
+        let g:jsdoc_enable_es6 = 1
+        let g:jsdoc_param_description_separator = 1
+    " }}}
 " }}}
 
 " Common {{{
+    " encoding
+    set encoding=utf-8
+
     " Transparency
     hi Normal guibg=NONE ctermbg=NONE
     hi NonText guibg=NONE ctermbg=NONE
     hi EndOfBuffer guibg=NONE ctermbg=NONE
     hi SpecialKey guibg=NONE ctermbg=NONE
+    hi ErrorMsg guibg=NONE ctermbg=NONE
+    hi WarningMsg guibg=NONE ctermbg=NONE
+    hi Error guibg=NONE ctermbg=NONE
+    hi Todo guibg=NONE ctermbg=NONE
 
     " Clipboard
     set clipboard=unnamedplus
@@ -164,9 +205,10 @@ let mapleader = " "
     nmap <c-t>n :tabnew<cr>
     nmap <c-t>q :tabclose<cr>
     nmap <c-t>h :tabprevious<cr>
-    nmap <c-t>j :tabnext<cr>
     nmap <c-t>k :tabprevious<cr>
+    nmap <c-t>j :tabnext<cr>
     nmap <c-t>l :tabnext<cr>
+    nmap <c-t>t :tabnext<cr>
 
     " Windows
     nmap <c-h> :wincmd h<cr>
@@ -178,9 +220,17 @@ let mapleader = " "
     set incsearch
     nmap <leader><leader> :noh<cr>
 
-    " Drop buffers
+    " buffers
     command! BD %bd|e#
+    nmap <F9> :buffers<cr>:buffer<space>
+    nmap <F9><F9> :b#<cr>
 
     " realtime update
     command! Updatable set autoread | au CursorHold * checktime | call feedkeys("lh")
+
+    " for zsh vi-mode
+    set backspace=indent,eol,start
+
+    " path
+    set path+=.,src,node_nodules
 " }}}
