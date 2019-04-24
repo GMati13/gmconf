@@ -2,48 +2,113 @@
 
 function send-command {
     echo "$4"
-    tmux -L "$1" select-window -t "$1":"$2"
-    tmux -L "$1" send-keys -t "$3" C-c
-    tmux -L "$1" send-keys -t "$3" "$4" enter
+    tmux -L "$1" send-keys -t "$1":"$2"."$3" "$4" enter
 }
 
 function create-session {
-    tmux -L "$1" new-session -d -s "$1" -n "shell"
-    tmux -L "$1" source-file "$HOME/.tmux/tmux-$1.conf"
+    path="$HOME/$1"
+    if [ ! -f $path ]; then
+        mkdir -p $path
+    fi
+    cd $path
+
+    if [ "$#" -eq "1" ]; then
+        tmux -L "$1" has -t="$1" > /dev/null 2>&1
+        if [ "$?" -eq 1 ]; then
+            tmux -L "$1" new-session -d -s "$1" -n "shell"
+            config="$HOME/.tmux/tmux-$1.conf"
+            if [ -f "$config" ]; then
+                tmux -L "$1" source-file "$config"
+            else
+                echo no such config file $config
+            fi
+            echo session \"$1\" started
+        elif [ "$#" -eq "1" ]; then
+            echo session \"$1\" already exists
+        fi
+    fi
+
+    for session in "${@:2}"; do
+        tmux -L "$1" has -t="$session" > /dev/null 2>&1
+        if [ "$?" -eq 1 ]; then
+            path="$HOME/$1/$session"
+            if [ ! -f $path ]; then
+                mkdir -p $path
+            fi
+            cd $path
+
+            config="$HOME/.tmux/tmux-$1-{$session}.conf"
+            tmux -L "$1" new-session -d -s "$session" -n "shell"
+            if [ -f "$config" ]; then
+                tmux -L "$1" source-file "$config"
+            else
+                echo no such config file $config
+            fi
+            echo session \"$session\" started
+        else
+            echo session \"$session\" already exists
+        fi
+    done
 }
 
 function attach-to-session {
-    tmux -L "$1" attach-session -t "$1"
+    if [ "$#" -eq "1" ]; then
+        tmux -L "$1" attach-session -t "$1"
+    elif [ "$#" -eq "2" ]; then
+        tmux -L "$1" attach-session -t "$2"
+    else
+        echo too many args
+    fi
 }
 
 function kill-session {
-    tmux -L "$1" kill-session -t "$1"
+    if [ "$#" -eq "1" ]; then
+        tmux -L "$1" kill-server
+    else
+        for session in "${@:2}"; do
+            tmux -L "$1" kill-session -t "$session"
+        done
+    fi
 }
 
-case "$1" in
-    huddle)
-        mkdir -p ~/projects/huddlebeam
-        cd ~/projects/huddlebeam ;;
+function list-client {
+    tmux -L "$1" list-client
+}
+
+function detach-all {
+    tmux -L "$1" detach-client -s "$1"
+}
+
+function list-sessions {
+    if [ -z "$1" ]; then
+        lsof -U | sed -n 's/^tmux.*tmux-1000\/\([^\ ]*\).*/\1/p' 
+    else
+        exists=`lsof -U | sed -n "s/^tmux.*tmux-1000\/\($1\).*/\1/p"`
+        if [ -z "$exists" ]; then
+            echo session \"$1\" not started
+        else
+            tmux -L "$1" ls
+        fi
+    fi
+}
+
+ACTION="$1"
+
+case "$ACTION" in
+    attach|a)
+        attach-to-session "${@:2}" ;;
+    list|ls|l)
+        list-sessions "$2" ;;
+    list-clients|lsc|lc)
+        list-client "$2" ;;
+    detach-all|da)
+        detach-all "$2" ;;
+    start|s)
+        create-session "${@:2}" ;;
+    kill|k)
+        kill-session "${@:2}" ;;
+    exec|e)
+        send-command $2 $3 $4 "$5" ;;
     *)
-        mkdir -p ~/projects/$1
-        cd ~/projects/$1 ;;
+        echo "Unknown action $ACTION" ;;
 esac
-
-args=$2
-for (( i=0; i<${#args}; i++ )); do
-    arg=${args:$i:1}
-
-    case "$arg" in
-        a) # attach
-            attach-to-session "$1" ;;
-        s) # start
-            create-session "$1" ;;
-        k) # kill
-            kill-session "$1" ;;
-        r) # restart
-            kill-session "$1"
-            create-session "$1" ;;
-        e) # exec
-            send-command $1 $3 $4 "$5" ;;
-    esac
-done;

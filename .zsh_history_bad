@@ -1,0 +1,1213 @@
+vim
+clear
+exit
+exit
+npm run start:test
+vim
+cd ~/projects/vbox/centeos-7-huddle && clear
+npm start
+exit
+tmuxto huddle a
+tmuxto huddle s
+tmuxto huddle a
+vim ~/.vimrc
+vim ~/.vimrc
+clear
+clear
+tmuxto huddle a
+tmuxto huddle k
+tmuxto huddle s
+tmuxto huddle a
+tmux
+tmuxto huddle a
+tmuxto huddle k
+vim ~/.tmux.conf
+vim ~/.zshrc
+vim ~/.zshrc
+tmuxto huddle a
+tmuxto huddle s
+tmuxto huddle a
+vim ~/.zshrc
+tmuxto huddle k
+tmuxto huddle sa
+vim ~/.tmux.conf
+tmuxto huddle k
+tmuxto huddle sa
+tmuxto huddle k
+tmuxto huddle sa
+. ~/.vimrc
+. ~/.zshrc
+clear
+vim
+tmuxto gmconf 
+tmuxto gmconf a
+tmuxto gmconf k
+tmuxto gmconf sa
+ll
+cp ~/.vimrc vimrc-max
+gs
+gd
+vim ~/.vimrc
+cp ~/.vimrc vimrc-max
+gd
+ga .
+gc 'update max config'
+gph
+gd HEAD^
+clear
+clear
+tmuxto huddle a
+му�у�
+vim
+ssh localhost
+exit
+clea
+clear
+vim ~/.vimrc
+vim ~/.zshrc
+ssh localhost
+exit
+. ~/.zshrc
+exit
+ssh localhost
+ exit
+. ~/.zshrc
+. ~/.zshrc
+. ~/.zshrc
+. ~/.zshrc
+. ~/.zshrc
+cd ..
+cd -
+cd ~
+cd 
+cd -
+tmuxto huddle k
+tmuxto huddle s
+npm start
+npm run start:test
+cd ~/projects/vbox/centeos-7-huddle && clear
+vim
+tmuxto huddle a
+clear
+vim
+cd projects/huddlebeam
+clear
+tmux
+vim
+clear
+exit
+clear
+cd
+vim ~/.zshrc
+clear
+exit
+tmuxto huddle a
+cd ~/projects/huddlebeam
+clear
+..
+cd.
+cd ..
+clear
+exit
+clear
+exit
+sudo -i
+clear
+exit
+exit
+spaceship_vi_mode_enable
+exit
+exit
+exit
+clear
+exit
+clear
+clear
+tmuxto huddle k
+tmuxto huddle s
+npm run start:test
+cd ~/projects/vbox/centeos-7-huddle && clear
+npm start
+vim
+tmuxto huddle a
+npm
+vim ~/.vimrc
+clear
+exit
+exit
+rxit
+rxit
+exit
+clea
+clear
+exit
+exit
+exit
+tmuxto huddle k
+tmuxto huddle s
+tmuxto huddle a
+npm start
+vim
+npm run start:test
+cd ~/projects/vbox/centeos-7-huddle && clear
+exit
+pavucontrol-qt
+exot
+exit
+clear
+clear
+gd
+clear
+vim
+clear
+sudo apt list --upgradable
+sudo apt list --upgradable | wz -C
+sudo apt list --upgradable | wz -c
+sudo apt list --upgradable | wc -l
+sudp apt upgrade
+sudo apt upgrade
+clea
+clear
+htop
+tmuxto huddle a
+clear
+vim
+ll /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+vim ~/.zdhrc
+vim ~/.zshrc
+. ~/.zshrc
+ll
+clea
+rclear
+clear
+ll
+clear
+tmuxto huddle k
+tmuxto huddle s
+tmuxto huddle a
+npm run start:test
+npm start
+cd ~/projects/vbox/centeos-7-huddle && clear
+vim
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+clea
+clear
+tmuxto vimgram a
+tmuxto vimgram s
+tmuxto vimgram a
+vim
+gitagod
+gs
+clear
+gitadog
+vimgram
+where vimgram
+whereis vimgram
+ll ~/bin
+ll
+python3 main.py
+clear
+gs
+gs vimgram
+gs vimgram/
+ga .
+gc 'big update'
+gs
+git branch
+gitadog
+gco master
+vimgram
+vimgram
+exit
+exit
+clear
+gs
+clear\
+S\
+
+vim ~/.install-vim.sh
+chmod +x .install-vim.sh
+./.install-vim.sh
+му�у�у�
+vim
+vim
+vim
+vim
+exit
+ll
+ll | grep vim
+ll | grep vim
+cd vimtemp
+ll
+ll --color
+. ~/.zshrc
+ll
+ll
+./vimtutor.com
+vim
+vim ~/.bashrc
+nano ~/.bashrc
+clear
+/usr/bin/vim
+ll
+grep -A 10 install Makefile
+make install
+clear
+vim
+ll
+cat uninstal.txt
+l
+ll
+make
+make install
+sudo make install
+vim
+му�у�
+vim
+sudo apt-get remove --purge vim vim-runtime vim-gnome vim-tiny vim-gui-common\
+
+sudo apt-get install -y liblua5.1-dev luajit libluajit-5.1 python-dev ruby-dev libperl-dev libncurses5-dev libatk1.0-dev libx11-dev libxpm-dev libxt-dev\
+
+sudo rm -rf /usr/local/share/vim /usr/bin/vim
+cd src
+make distclean
+cd ..
+./configure \\
+--enable-multibyte \\
+--enable-perlinterp=dynamic \\
+--enable-rubyinterp=dynamic \\
+--with-ruby-command=/usr/bin/ruby \\
+--enable-pythoninterp=dynamic \\
+--with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \\
+--enable-python3interp \\
+--with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \\
+--enable-luainterp \\
+--with-luajit \\
+--enable-cscope \\
+--enable-gui=auto \\
+--with-features=huge \\
+--with-x \\
+--enable-fontset \\
+--enable-largefile \\
+--disable-netbeans \\
+--with-compiledby="yourname" \\
+--enable-fail-if-missing
+exit
+make && sudo make install
+vim
+vim --version
+vim --version | grep python
+vim ~/.vimrc
+vim
+vim
+vim
+exit
+..
+cd ..
+mv .vimrc vimrc
+vim
+mv vimrc .vimrc
+vim
+vim ~/.vimrc
+vim
+pip install --user Pillow
+pip install Pillow
+python -m pip install --user Pillow
+python --mode pip install --user Pillow
+python -m pip install --user Pillow
+sudo apt install python-pip
+pip install --user Pillow
+vim
+vim
+vim ~/.vimrc
+vim
+clear
+tmuxto huddle a
+gs
+gs
+gco dist/test/__snapshot__/main.js.snap
+gs
+gd
+rm dist/test/__snapshots__/main.js.snap
+gs
+gco package-lock.json
+gs
+clear
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/NewHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/NewHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/NewHouse.js
+vim ~/.vimrc
+translate
+bash
+exit
+vim ~/.zshrc
+. ~/.zshrc
+translate -t en ору�ограу�иу�
+translate spelling
+translate orthography
+vim ~/.vimrc
+vim ~/.vimrc
+vim ~/.vimrc
+tmuxto huddle a
+vim
+translate weak
+translate puffery
+translate redunant
+translate redundant
+translate problematic
+exit
+vim ~/.notes
+gd
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+vim
+tmuxto huddle a
+vim
+tmuxto huddle a
+vim
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+vim ~/.vimrc
+cd ~/.vim/plugged/i3-vim-focus
+ll
+ll i3-vim-focus
+cd i3-vim-focus
+cargo
+sudo apt install cargo
+cargo build -- release
+cargo build --release
+cargo build --release
+sudo apt install libglib2.0-dev
+cargo build --release
+cc
+sudo apt install libcaribou-dev
+ll
+gs
+cargo build --release
+sudo apt install blixdo-dev
+sudo apt install libxdo-dev
+cargo build --release
+i3-vim-focus
+ll
+exit
+ll
+./target/release/i3-vim-focus
+ln -s `realpath target/release/i3-vim-focus` ~/.local/bin/i3-vim-focus
+i3-vim-focus
+i3-vim-focus left
+vim ~/.config/i3/config
+vim ~/.vimrc
+cd ..
+sudo apt remove libcaribou-dev
+sudo apt remove libxdo-dev
+sudo apt remove libglib2.0-dev
+sudo apt autoremove
+sudo apt autoremove
+clear
+cd
+vim ~/.vimrc
+ll
+clear
+exit
+jobs
+jobs %vim\ \~/.vimrc
+jobs %vim\ \~/.vimrc
+jobs %vim\ \~/.vimrc %vim\ \~/.vimrc
+fg 1
+fg 2
+jobs
+fg 1
+fg 2
+fg %1
+fg %2
+vim ~/.config/i3/config
+exit
+htop
+tmuxto htop
+tmuxto htop sa
+htop
+pyp3
+python3 -m pyp
+python3 -m pyp3
+python3 -m pip
+python3 -m pip install qutebrowser
+translate "This syntax file is not maintained anymore"
+vim ~/.vimrc
+vim ~/.config/i3/config
+clear
+clear
+git clone https://github.com/unix121/Themes
+ll | grep Theme
+mv ~/.config/i3/config .i3.config
+clear
+vim ~/.i3
+vim ~/.i3.config
+ll i3
+ll .i3
+mv .i3.config ~/.config/i3/config
+i3-msg restart
+mv ~/.config/i3/config ~/.i3/i3.config
+i3-msg restart
+mv .i3/i3.config ~/.config/i3/config
+i3-msg restart
+mv ~/.config/i3/config ~/.i3/config
+vim ~/.i3/config
+ln -s `realpath .i3/config` ~/.i3.config
+rm .install-vim.sh
+vim ~/.i3.config
+gcl https://github.com/tobi-wan-kenobi/bumblebee-status
+mv bumblebee-status .i3
+cd .i3/bumblebee-status
+ll
+ln -s `realpath bumblebee-status` ~/.local/bin/bumblebee-status
+exit
+bumblebee-status
+vimchrome
+exit
+vimchrome&
+clear
+exit
+gcl https://github.com/gabrielelana/awesome-terminal-fonts
+webpack
+cd awesome-terminal-fonts
+ll
+clear
+ll .bui
+ll .build
+ll
+ll build
+ll ~/.fonts
+cp build/* ~/.fonts
+fc-cache -fv ~/.fonts
+exit
+ll
+ll config
+vim config/10-symbols.conf
+cp config/10-symbols.conf ~/.config/fontconfig/conf.d/
+vim ~/.zshrc
+vim
+cat ~/.zshrc-clam
+clear
+exit
+vim ~/.i3.config
+vim ~/.i3.config
+vim ~/.i3.config
+vim ~/.zshrc
+vim
+vim ~/.zshrc
+exit
+exit
+fg %1
+exit
+bash
+vimchrome
+clear
+ll bimn
+ll bin
+cd bin
+ll
+cd ..
+mv bin/* ~/.local/bin
+vimchrome
+clear
+clear
+vim ~/.zshrc
+clear
+vim ~/.notes
+clear
+mv ~/.i3/config ~/.config/i3/config
+rm .i3.config
+ln -s `realpath ~/.config/i3/config` .i3.config
+clam send $Stoyan -t stranno
+clam start
+clam send $Stoyan -t stranno
+clam send $Stoyan -t chto-to ya ne to sdelal s i3config
+kblang.sh
+clam send $Stoyan -t у� мену�-то тоже есту�
+clam send $Stoyan -t проблема в дру�гом
+clam send $Stoyan -t по какой-то приу�ине у� мену� перестало нормалу�но работату� d-menu
+clam send $Stoyan -t и не запу�скает приложениу�
+clam send $Stoyan -t так у�то у� вообу�е сейу�ас тебе пиу�у� из терминала
+clam send $Stoyan -t а у�итау� сообу�ениу� в телеу�оне
+clam send $Stoyan -t у�же не ну�жен
+clam send $Stoyan -t у� му�у�ал его кону�иг
+clam send $Stoyan -t проблема в том, у�то мне d-menu все показу�вает, у�то у� могу� запу�ститу�, но не делает у�того
+vim ~/.bashrc
+dmenu
+dmenu --help
+dmenu vimchrome
+dmenu -m 1 vimchrome
+dmenu
+dmenu_run
+vim .i3.config
+dmenu_run
+exit
+exit
+vim ~/.zshrc
+vim ~/.i3.config
+ll ~/.config/i3/
+vim .i3.config
+clear
+vimchrome
+clear
+exit
+dmenu
+exit
+cd ~/.local/bin
+ll
+nv vimchrome vimchrome.desktop
+mv vimchrome vimchrome.desktop
+i3-dmenu-desktop
+mv vimchrome.desktop vimchrome
+exit
+clear
+vim ~/.i3.config
+vim ~/.i3.config
+clear
+clear
+clam kil
+clam kill
+clam send $me -t test
+clam start
+clam send $me -t test
+vim
+tmuxto huddle a
+tmuxto huddle s
+tmuxto huddle a
+npm run start:test
+vim
+npm start
+pthon3
+python3
+print('hello world')
+cd ~/projects/vbox/centeos-7-huddle && clear
+ip arrd
+ip addr
+tmuxto huddle a
+exit
+exit
+vim ~/.zsh
+vim ~/.zshrc
+vim ~/.i3.config
+clear
+vim
+vim ~/.vimrc
+rm -rf ~/.fonts/*
+rm ~/.config/fontconfig
+rm ~/.config/fontconfig/conf.d/10-symbols.conf
+fc-cache -r
+fc-cache -fr
+clear
+\
+clear
+fc-cache -fv
+clear
+vim
+reboot
+clear
+clear
+clea
+clear
+ll
+rm -rf awesome-terminal-fonts
+tail .xsession-errors
+tail .xsession-errors
+tail .xsession-errors
+vimchrome
+clear
+vim ~/.profile
+ln -s .profile .xsessionrc
+tail .xsession-errors
+vim ~/.zshrc
+tail .xsession-errors
+i3-msg restart
+systemctl restart sddm.service
+~/snap/telegram-desktop/current/
+~/snap/telegram-desktop/current
+cd ~/snap/telegram-desktop
+ll
+cd 490
+ll
+cd
+snap install telegram-desktop
+sudo snap install telegram-desktop
+sudo --help
+sudo -l
+/snap/bin/telegram-desktop
+vim ~/.zshrc
+systemctl restart sddm.service
+vim ~/.zshrc
+telegram-desktop
+clear
+tail .xsession-errors
+vim ~/.bashrc
+vim ~/.zshrc
+systemctl restart sddm.service
+systemctl restart sddm.service
+clear
+vim ~/.tele
+vim ~/.bashrc
+vim ~/.zshrc
+exho $PATH
+echo $PATH
+telegram-desktop
+vim ~/.zshrc
+systemctl restart sddm.service
+ln -s /snap/telegram-desktop .local/bin/tg-desktop
+tg-desktop
+cd .local/bin
+ll
+cd /snap/bin
+ll
+snap --help
+exit
+sudo apt install telegram-desktop
+snap --help
+snap remove
+snap uninstall
+snap remove telegram-desktop
+sudo snap remove telegram-desktop
+tmuxto huddle a
+tmuxto huddle s
+tmuxto huddle a
+npm run start:test
+vim
+cd ~/projects/vbox/centeos-7-huddle && clear
+npm start
+gs
+matterhorn
+clear
+clear
+clear
+clear
+sudo apt remove telegram-desktop
+sudo apt autoremove
+sudo snap install telegram-desktop
+telegram-desktop
+clear
+exit
+vim
+exit
+vim
+clear
+clear
+vim
+clear
+tmuxto huddle a
+tmuxto htop a
+tmuxto htop sa
+htop
+	clear
+vumgram
+vimgram
+clear
+exit
+vim ~/.notes
+cd ~/.vim/plugged/YouCompleteMe
+vim
+clear
+cd..
+cd .
+cd ..
+vim ~/.vimrc
+cd -
+ll
+clear
+clear
+python3 install.py --js-completer
+sudo apt install tern
+npm i -g tern
+cat .tern-config
+echo {} >> .tern-config
+cat .tern-config
+clear
+exit
+cd
+exit
+tmuxto huddle a
+vim
+vim ~/.vimrc
+tmuxto huddle k
+tmuxto huddle s
+tmuxto huddle a
+vim
+npm start
+npm run start:test
+cd ~/projects/vbox/centeos-7-huddle && clear
+vim ~/.vimrc
+tmuxto huddle a
+vim
+vim ~/.vimrc
+tmuxto huddle a
+clear
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+translate 'floating failed test, investigate'
+celar
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js 2>&1 | clam send $me
+clam start
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js 2>&1 | clam send $me
+for i in {1..10}; do npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js 2>&1 | clam send $me; done
+for i in {1..10}; do npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js 2> | clam send $me; done
+for i in {1..10}; do npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js 2> clam send $me; done
+for i in {1..10}; do npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js; done
+for i in {1..10}; do npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js | grep FAIL | clam send $me; done
+for i in {1..10}; do npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js | grep FAIL | clam send $me; done
+for i in {1..30}; do npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js | grep FAIL | clam send $me; done
+ll /tmp/clam-1000
+clam start
+for i in {1..30}; do npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js | grep FAIL | clam send $me; done
+ll --color /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+ll --color /tmp/clam-1000/
+npm run test:exec dist/test/client/backoffice/QuotesAndTariffs/AreaCoverage/AreaCoverageSerial.js
+npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js
+npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js
+npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js
+npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js\
+: 1549367534:0;npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js\
+: 1549367535:0;npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js
+npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js
+npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js
+npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js
+npm run test:exec dist/test/client/backoffice/Houses/EditHouse/Supplier.js
+clear
+translate heap
+translate kittens
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+ll --color /tmp/clam-1000/
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js
+clear
+gs
+cat clam
+ll clam
+rm clam
+clam send $me -t 1
+clear
+ll
+gs
+npm run test:exec dist/test/client/backoffice/Tenants/EditTenant/Tenant.js -- -u
+gd
+gs
+gd test/client/backoffice/Houses/EditHouse/Supplier.js
+vim
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+cd Downloads/Telegram\ Desktop
+ll
+hef
+feh
+clear
+ll
+mkdir ~/Pictures/emoji
+mv caf5608a-67ec-4f9f-acb5-db0052c33bed ~/Pictures/emoji/parrot
+clam send $me -i ~/Pictures/emoji/parrot
+clam send $me -i ~/Pictures/emoji/parrot
+clam send $me -f ~/Pictures/emoji/parrot
+clam send $me -t 1
+clam kill
+clam start
+clam send $me -i ~/Pictures/emoji/parrot
+clam send $me -f ~/Pictures/emoji/parrot
+clam send $me -t 1
+clam kill
+clam start
+clam send $me -t 1
+clam send $me -f ~/Pictures/emoji/parrot
+clam send $me -i ~/Pictures/emoji/parrot
+clam send $me -t 1
+clam kill
+clam start
+clear
+clear
+tmuxto huddle a
+translate beep
+translate -t en бип
+translate -t us бип
+translate -t en_us бип
+translate -t en_US бип
+translate -t en_US-UTF8 бип
+translate бип
+translate биип
+translate вере
+translate ву�ере
+translate вву�ере
+translate где
+translate вера
+translate там
+translate ту�тау�ний
+translate Ѓ�ома
+translate Roma
+translate Roman
+translate <jhz
+translate Ѓ�ору�
+translate Ѓ�орис
+translate Ѓ�ора
+translate Bora
+translate Boris
+translate bargbaris
+translate barbaris
+translate Ѓ�ау�а
+translate Флекс
+translate Ѓ�лекс
+translate Ѓ�лександр
+translate barbaris
+translateBARIS
+translate BARIS
+translate bar
+translate baris
+translate bara
+translate alex
+translate alexandor
+translate sasha
+translate romanama
+translate romana
+translate Romana
+translate Roman
+translate Romanov
+translate Romans
+translate 'Romans home'
+translate 'Roman home'
+clear
+translate Ѓ�лад
+translate Ѓ�ладимир
+translate Vlad
+translate Vladimi
+translate Vladimir
+сду�у�к
+clear
+clear
+gs
+gd
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+translate '"Alternative address" and house address are the same!'
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+npm run test:exec dist/test/client/frontoffice/Signup/HouseDetails/AddToTheHouse.js
+translate Aw, Snap!'
+translate 'Aw, Snap!'
+tmuxto conf
+cd
+cd .i3
+ll
+gs
+git clone git://github.com/tobi-wan-kenobi/bumblebee-status
+ll bumblebee-status
+vim ~/.i3.config
+vim ~/.vimrc
+vim ~/.i3.config
+cd bumblebee-status
+./bumblebee-status -l themes
+./bumblebee-status -l modules
+./bumblebee-status -l themes
+vim ~/.i3.config
+cd ~/.i3/bumblebee-status
+./bumblebee-status -l themes
+./bumblebee-status -l modules
+./bumblebee-status -l modules | less
+i3-msg restart
+i3-msg --help
+i3-msg source
+celar
+clear
+vim ~/.i3.config
+ll ~/.config/i3/config
+vim ~/.config/i3/config
+vim ~/.i3.config
+vim ~/.i3.config
+./bumblebee-status -l modules | less
+cd ~/.i3/bumblebee-status
+./bumblebee-status -l modules | less
+vim ~/.i3.config
+ls -ld ~
+exit
+vim ~/.local/bin/kblang.sh
+vim ~/.i3.config
+vim ~/.i3.config
+vim ~/.i3.config
+psutil
+sudo apt install psutil
+pip3 install --user psutil
+psutil
+exit
+pip3 unnstall --user psutil
+pip3 uninstall --user psutil
+pip3 remove --user psutil
+cd ~/.i3/bumblebee-status
+clear
+exit
+sudo apt install python3-psutil
+sudo apt install python-psutil
+exit
+vim ~/.local/bin/kblang.sh
+kblang.sh
+clear
+xkbwatch
+clear
+xkbprint
+xkbprint -lc
+setxkbmap --help
+setxkbmap -help
+setxkbmap -layout ru
+kblang.sh
+exit
+vim ~/.i3.confti
+exit
+t
+exit
+setxkbmap --help
+setxkbmap -help
+setxkbmap -optoin
+setxkbmap -option
+setxkbmap -option -help
+setxkbmap -option
+vim ~/.i3.config
+xkb-switch
+vim ~/.local/bin/kblang.sh
+kblang.sh
+cd ~/.local/lib
+ll
+gcl https://github.com/ierton/xkb-switch
+cd xkb-switch
+ll
+mkdir build && cd build
+cdmake ..
+cmake ..
+make
+sudo apt install libxkbfile-dev
+make
+sudo make install
+xkb-switch
+xkb-switch -x
+xkb-switch --help
+exit
+xkb-switch --help
+xkb-switch --help 2>&1 | xclip -selection clipboard
+xkb-switch -l
+sudo apt remove xkb-switch
+where xkb-switch
+ll /usr/local/bin/xkb-switch
+apt --help
+apt search libxkbswitch
+cd ~/.i3/bumblebee-status
+./bumblebee-status -l modules
+./bumblebee-status -l modules | less
+sudo apt insta;; python3-netifaces
+sudo apt install python3-netifaces
+pip3 install --user netifaces
+pip install --user netifaces
+exit
+vim ~/.i3.config
+psql
+sudo -u postgres psql
+sudo -u postgres psql gmati_shopping
+pavucontrol-qt
+cd
+cd Documents
+mkdir ~/git;cd ~/git\
+git clone https://www.github.com/Airblader/i3 i3-gaps
+sudo -i
+ll
+ll ..
+ll
+l
+ll
+ll
+ll i3-gaps
+cd
+ll
+ll | grep x
+ll | grep xc
+ll | grep xl
+ll | grep xk
+cd git
+git clone https://github.com/Airblader/xcb-util-xrm\
+cd xcb-util-xrm
+git submodule update
+git submodule update --init
+./autogen.sh --prefix=/usr
+make
+sudo make install
+cd ~/git/i3-gaps
+autoreconf --force --install\
+
+rm -rf build/
+mkdir -p build && cd build/
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers\
+
+make
+sudo make install\
+
+systemctl exit
+clear
+systemctl exit
+vim ~/.notes
+logout
+i3-msg logout
+i3-vim-focus
+sudo pkill -u mati
+kblang.sh
+sudo apt remove i3
+where i3
+sudo apt autoremove
+i3
+sudo apt remove i3
+i3-vim-focus
+where i3-vim-focus
+where i3
+where i3wm
+where i3bar
+i3
+where i3-vim-focus
+ll /usr/local/bin | grep i3
+ll /usr/bin | grep i3
+clear
+i3-dmenu-desktop
+dmenu
+cd git
+ll
+cd i3-gaps
+ll
+ll | grep dmenu
+sudo apt install i3
+vim .notes
+vim ~/.i3
+vim .i3.c
+vim ~/.i3.config
+i3bar
+kblang.sh
+vim ~/.i3.config
+t
+exit
+vim ~/.i3.config
+exit
+vim ~/.i3.config
+vim ~/.screenlayout/main.sh
+exi
+exit
+sudp pkill -u mati
+sudo pkill -u mati
+vim ~/.i3.config
+sudo pkill -u mati
+vim ~/.i3.config
+sudo pkill -u mati
+xkb-switch
+xkb-switch
+setxkbmap -layout us,ru
+xkb-switch
+xkb-switch
+xkb-switch
+setxkbmap -layout grp:alt_shift_toggle
+setxkbmap -layout gpr:alt_shift_toggle
+kblang.sh
+xkb-switch
+xkb-switch
+xkb-switch --help
+xkb-switch -n
+xkb-switch -n
+xkb-switch -n
+xkb-switch -n
+vim ~/.i3.config
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+cd ~/.i3/bumblebee-status
+ll
+./bumblebee-status --help
+./bumblebee-status -l modules | less
+./bumblebee-status -l modules | less
+sudo apt install libx11-dev
+./bumblebee-status -l modules | less
+pip3 install --user xkbgroup
+pip install --user xkbgroup
+clear
+sudo apt install nodm
+reboot
+vim /etc/nodm.conf
+sudo vim /etc/nodm.conf
+ll
+ll | xinit
+ll | grep xinit
+ll
+cat profile
+cat .profile
+sudo vim /etc/nodm.conf
+sudo vim /etc/pam.d/nodm
+reboot
+exit
+reboot
+sudo vim /etc/nodm.conf
+sudo systemctl stop nodm.service
+sudo systemctl start nodm.service
+exit
+sudo systemctl stop nodm.service
+sudo systemctl start sddm.service
+sudo systemctl start saned@ddm
+sudo systemctl start sddm
+sudo systemctl restart sddm.service 
+sudo systemctl restart sddm.service
+sudo systemctl status sddm.service
+sudo systemctl start sddm.service
+/usr/bin/sddm
+sudo systemctl stop nodm.service
+/usr/bin/sddm
+sudo apt remove nodm
+dpkg-reconfigure sddm
+sudo dpkg-reconfigure sddm
+sudo systemctl start sddm
+vim ~/.xinitrc
+sudo apt install gnome
+reboot
+sudo systemctl stop sddm
+reboot
+: 1549453772:0;mv .zsh_history .zsh_history_bad\
+strings .zsh_history_bad > .zsh_history\
+fc -R .zsh_history

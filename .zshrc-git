@@ -1,0 +1,36 @@
+# git
+alias gcl="git clone"
+
+alias gi="git init"
+alias grao="git remote add origin"
+alias grro="git remote remove origin"
+
+alias gclun="git config --local user.name"
+alias gclue="git config --local user.email"
+alias gcgun="git config --global user.name"
+alias gcgue="git config --global user.email"
+
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias getadog="git log --all --decorate --oneline --graph"
+alias gd="git diff"
+
+alias gco="git checkout"
+alias gcb="git checkout -b"
+
+alias grh="git reset --hard"
+alias grs="git reset --soft"
+alias gr="git reset"
+
+alias gm="git migrate"
+
+alias gp="git push"
+alias gph="git push origin HEAD"
+
+alias gf="git fetch"
+alias gfh="git fetch origin HEAD"
+alias gpl="git pull"
+alias gplh="git pull origin HEAD"
+
+alias gpatch="patch -p1 -i"
