@@ -28,9 +28,6 @@ let mapleader = " "
         Plug 'heavenshell/vim-jsdoc'
         " TSserver client
         Plug 'Quramy/tsuquyomi'
-        " Clojure
-        Plug 'vim-scripts/VimClojure'
-        Plug 'tpope/vim-fireplace'
     " }}}
 
     " UI {{{
@@ -121,8 +118,8 @@ let mapleader = " "
         map <leader>f <Plug>(easymotion-overwin-f)
         map <leader>F <Plug>(easymotion-overwin-f2)
         map <leader>l <Plug>(easymotion-overwin-line)
-        map / <Plug>(incsearch-easymotion-/)
-        map ? <Plug>(incsearch-easymotion-?)
+        map <leader>/ <Plug>(incsearch-easymotion-/)
+        map <leader>? <Plug>(incsearch-easymotion-?)
         map g/ <Plug>(incsearch-easymotion-stay)
     " }}}
 
