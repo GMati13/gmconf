@@ -20,7 +20,7 @@ kill_parser.add_argument('socket', type=str)
 kill_parser.add_argument('sessions', type=str, nargs='*')
 
 list_parser = top_subparser.add_parser('list')
-list_parser.add_argument('socket', type=str, nargs='*')
+list_parser.add_argument('sockets', type=str, nargs='*')
 
 parsed_args = top_parser.parse_args()
 
