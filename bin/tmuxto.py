@@ -28,7 +28,7 @@ do_action = {
     'start': lambda: start_session(parsed_args.socket, parsed_args.sessions),
     'attach': lambda: attach_session(parsed_args.socket, parsed_args.session),
     'kill': lambda: kill_session(parsed_args.socket, parsed_args.sessions),
-    'list': lambda: list_sessions(parsed_args.socket),
+    'list': lambda: list_sessions(parsed_args.sockets),
 }
 
 def start_session(socket, sessions):
