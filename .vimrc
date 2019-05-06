@@ -55,8 +55,8 @@ let mapleader = " "
 
     " Theme {{{
         set t_Co=256
-        colorscheme iceberg
         set background=dark
+        colorscheme iceberg
     " }}}
 
     " Easy Align {{{
