@@ -1,0 +1,17 @@
+bash-prompt () {
+    if [[ -z $(git rev-parse --is-insice-work-tree 2> /dev/null) ]]; then
+        echo $(dirs +0)
+    else
+        echo -e\
+            \\033[93mgit\(\\033[01\;34m$(\
+                pwd | sed -e "s/$(
+                    git rev-parse --show-toplevel 2> /dev/null | \
+                    sed -e 's/\(\/[^\/]*\)\{,2\}$//'\
+                    | sed -e 's/\//\\\//g'
+                )//" | sed -e 's/\///'
+            )\\033[93m\)\
+            \\033[95m$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    fi;
+}
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]$(bash-prompt)\n\[\033[01;32m\]\u@\h:\[\033[00m\] '
