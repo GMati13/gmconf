@@ -1,114 +1,113 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3.7
+from argparse import ArgumentParser
+from pathlib import Path
+import os
 
-function send-command {
-    echo "$4"
-    tmux -L "$1" send-keys -t "$1":"$2"."$3" "$4" enter
+top_parser = ArgumentParser(prog='tmuxto')
+
+top_subparser = top_parser.add_subparsers(title='action', dest='action', required=True)
+
+start_parser = top_subparser.add_parser('start')
+start_parser.add_argument('socket', type=str)
+start_parser.add_argument('sessions', type=str, nargs='*')
+
+attach_parser = top_subparser.add_parser('attach')
+attach_parser.add_argument('socket', type=str)
+attach_parser.add_argument('session', type=str, nargs='?')
+
+kill_parser = top_subparser.add_parser('kill')
+kill_parser.add_argument('socket', type=str)
+kill_parser.add_argument('sessions', type=str, nargs='*')
+
+list_parser = top_subparser.add_parser('list')
+list_parser.add_argument('sockets', type=str, nargs='*')
+
+current_parser = top_subparser.add_parser('current')
+current_parser.add_argument('instance', type=str, nargs='?')
+
+parsed_args = top_parser.parse_args()
+
+do_action = {
+    'start': lambda: start_session(parsed_args.socket, parsed_args.sessions),
+    'attach': lambda: attach_session(parsed_args.socket, parsed_args.session),
+    'kill': lambda: kill_session(parsed_args.socket, parsed_args.sessions),
+    'list': lambda: list_sessions(parsed_args.sockets),
+    'current': lambda: current_instance(parsed_args.instance),
 }
 
-function create-session {
-    path="$HOME/$1"
-    if [ ! -f $path ]; then
-        mkdir -p $path
-    fi
-    cd $path
+def start_session(socket, sessions):
+    projects_folder = Path.joinpath(Path.home(), 'Projects')
+    project_folder = Path.joinpath(Path.home(), 'Projects/{}'.format(socket))
+    config_template = '.tmux/tmux-{}{}.conf'
+    
+    if not Path.exists(projects_folder):
+        print('no such directory: {}'.format(projects_folder))
+        exit()
 
-    if [ "$#" -eq "1" ]; then
-        tmux -L "$1" has -t="$1" > /dev/null 2>&1
-        if [ "$?" -eq 1 ]; then
-            tmux -L "$1" new-session -d -s "$1" -n "shell"
-            config="$HOME/.tmux/tmux-$1.conf"
-            if [ -f "$config" ]; then
-                tmux -L "$1" source-file "$config"
-            else
-                echo no such config file $config
-            fi
-            echo session \"$1\" started
-        elif [ "$#" -eq "1" ]; then
-            echo session \"$1\" already exists
-        fi
-    fi
+    if not Path.exists(project_folder):
+        print(os.mkdir(str(project_folder)))
 
-    for session in "${@:2}"; do
-        tmux -L "$1" has -t="$session" > /dev/null 2>&1
-        if [ "$?" -eq 1 ]; then
-            path="$HOME/$1/$session"
-            if [ ! -f $path ]; then
-                mkdir -p $path
-            fi
-            cd $path
+    def start(socket, session, folder, config_template):
+        has_session = os.system('tmux -L "{}" has -t="{}" > /dev/null 2>&1'.format(socket, session)) == 0
 
-            config="$HOME/.tmux/tmux-$1-{$session}.conf"
-            tmux -L "$1" new-session -d -s "$session" -n "shell"
-            if [ -f "$config" ]; then
-                tmux -L "$1" source-file "$config"
-            else
-                echo no such config file $config
-            fi
-            echo session \"$session\" started
-        else
-            echo session \"$session\" already exists
-        fi
-    done
-}
+        if has_session:
+            print('session "{}" already exists'.format(session))
+        else:
+            if Path.exists(folder):
+                os.chdir(str(folder))
+            os.system('tmux -L "{}" new-session -d -s "{}" -n "shell"'.format(socket, session))
 
-function attach-to-session {
-    if [ "$#" -eq "1" ]; then
-        tmux -L "$1" attach-session -t "$1"
-    elif [ "$#" -eq "2" ]; then
-        tmux -L "$1" attach-session -t "$2"
-    else
-        echo too many args
-    fi
-}
+            config_file = Path.joinpath(Path.home(), config_template.format(session))
+            if not Path.exists(config_file):
+                print('no such file "{}"'.format(str(config_file)))
+            else:
+                os.system('tmux -L "{}" source-file "{}"'.format(socket, str(config_file)))
+            print('session "{}" started'.format(session))
 
-function kill-session {
-    if [ "$#" -eq "1" ]; then
-        tmux -L "$1" kill-server
-    else
-        for session in "${@:2}"; do
-            tmux -L "$1" kill-session -t "$session"
-        done
-    fi
-}
+    if not sessions:
+        start(socket, socket, project_folder, config_template.format(socket, ''))
+    else:
+        for session in sessions:
+            start(socket, session, Path.joinpath(project_folder, session),
+                    config_template.format(socket, '-{}'))
 
-function list-client {
-    tmux -L "$1" list-client
-}
+def attach_session(socket, session):
+    if session:
+        os.system('tmux -L "{}" attach-session -t "{}"'.format(socket, session))
+    else:
+        os.system('tmux -L "{0}" attach-session -t "{0}"'.format(socket))
 
-function detach-all {
-    tmux -L "$1" detach-client -s "$1"
-}
+def kill_session(socket, sessions):
+    if sessions:
+        for session in sessions:
+            os.system('tmux -L "{}" kill-session -t "{}"'.format(socket, session))
+    else:
+        os.system('tmux -L "{}" kill-server'.format(socket))
 
-function list-sessions {
-    if [ -z "$1" ]; then
-        lsof -U | sed -n 's/^tmux.*tmux-1000\/\([^\ ]*\).*/\1/p' 
-    else
-        exists=`lsof -U | sed -n "s/^tmux.*tmux-1000\/\($1\).*/\1/p"`
-        if [ -z "$exists" ]; then
-            echo session \"$1\" not started
-        else
-            tmux -L "$1" ls
-        fi
-    fi
-}
+def list_sessions(sockets):
+    if not sockets:
+        os.system('lsof -U 2> /dev/null | sed -n "s/^tmux.*tmux-1000\\/\\([^\\ ]*\).*/\\1/p" | sort -u')
+    else:
+        for socket in sockets:
+            all_sockets = os.popen('lsof -U 2> /dev/null | sed -n "s/^tmux.*tmux-1000\\/\\({}\\).*/\\1/p" | sort -u'.format(
+                socket)).read().strip().split('\n')
+            if socket in all_sockets:
+                print('sessions into socket "{}"'.format(socket))
+                os.system('tmux -L "{}" ls'.format(socket))
+            else:
+                print('no such socket "{}"'.format(socket))
 
-ACTION="$1"
+def current_instance(instance):
+    socket = os.popen('echo $TMUX | sed -n "s/.*tmux-1000\\/\\([^,]*\\).*/\\1/p"').read().strip()
+    session = os.popen('tmux display-message -p "#S"').read().strip()
+    if instance == 'socket':
+        print(socket)
+    elif instance == 'session':
+        print(session)
+    else:
+        if socket == session:
+            print(socket)
+        else:
+            print('[{}] {}'.format(socket, session))
 
-case "$ACTION" in
-    attach|a)
-        attach-to-session "${@:2}" ;;
-    list|ls|l)
-        list-sessions "$2" ;;
-    list-clients|lsc|lc)
-        list-client "$2" ;;
-    detach-all|da)
-        detach-all "$2" ;;
-    start|s)
-        create-session "${@:2}" ;;
-    kill|k)
-        kill-session "${@:2}" ;;
-    exec|e)
-        send-command $2 $3 $4 "$5" ;;
-    *)
-        echo "Unknown action $ACTION" ;;
-esac
+do_action[parsed_args.action]()
