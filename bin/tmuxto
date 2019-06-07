@@ -2,28 +2,57 @@
 from argparse import ArgumentParser
 from pathlib import Path
 import os
+import argcomplete
+
+def list_sessions(socket=''):
+    if not socket:
+        sessions = os.popen('lsof -U 2> /dev/null | sed -n "s/^tmux.*tmux-1000\\/\\([^\\ ]*\).*/\\1/p" | sort -u').read().strip();
+        if socket != '':
+            print(sessions)
+        else:
+            return sessions.split('\n')
+    else:
+        all_sockets = os.popen('lsof -U 2> /dev/null | sed -n "s/^tmux.*tmux-1000\\/\\({}\\).*/\\1/p" | sort -u'.format(
+            socket)).read().strip().split('\n')
+        if socket in all_sockets:
+            print('sessions into socket "{}"'.format(socket))
+            os.system('tmux -L "{}" ls'.format(socket))
+        else:
+            print('no such socket "{}"'.format(socket))
+
+projects_folder = Path.joinpath(Path.home(), 'Projects')
+sockets = []
+
+for x in os.listdir(projects_folder):
+    project_folder = Path.joinpath(projects_folder, x)
+    if os.path.isdir(str(project_folder)):
+        sockets.append(x)
 
 top_parser = ArgumentParser(prog='tmuxto')
 
 top_subparser = top_parser.add_subparsers(title='action', dest='action', required=True)
 
 start_parser = top_subparser.add_parser('start')
-start_parser.add_argument('socket', type=str)
+start_parser.add_argument('socket', type=str, choices=sockets)
 start_parser.add_argument('sessions', type=str, nargs='*')
 
+list_sockets = list_sessions()
+
 attach_parser = top_subparser.add_parser('attach')
-attach_parser.add_argument('socket', type=str)
+attach_parser.add_argument('socket', type=str, choices=list_sessions())
 attach_parser.add_argument('session', type=str, nargs='?')
 
 kill_parser = top_subparser.add_parser('kill')
-kill_parser.add_argument('socket', type=str)
+kill_parser.add_argument('socket', type=str, choices=list_sessions())
 kill_parser.add_argument('sessions', type=str, nargs='*')
 
 list_parser = top_subparser.add_parser('list')
-list_parser.add_argument('sockets', type=str, nargs='*')
+list_parser.add_argument('sockets', type=str, nargs='?', choices=list_sockets)
 
 current_parser = top_subparser.add_parser('current')
-current_parser.add_argument('instance', type=str, nargs='?')
+current_parser.add_argument('instance', type=str, nargs='?', choices=['socket', 'session'])
+
+argcomplete.autocomplete(top_parser)
 
 parsed_args = top_parser.parse_args()
 
@@ -36,11 +65,12 @@ do_action = {
 }
 
 def start_session(socket, sessions):
-    projects_folder = Path.joinpath(Path.home(), 'Projects')
+    global projects_folder
+
     project_folder = Path.joinpath(Path.home(), 'Projects/{}'.format(socket))
     config_template = '.tmux/tmux-{}{}.conf'
     script_template = '.tmux/tmux-{}{}.sh'
-    
+
     if not Path.exists(projects_folder):
         print('no such directory: {}'.format(projects_folder))
         exit()
@@ -69,7 +99,7 @@ def start_session(socket, sessions):
                 os.system(str(script_file));
 
     if not sessions:
-        start(socket, socket, project_folder,
+        start(socket, 'root', project_folder,
                 config_template.format(socket, ''),
                 script_template.format(socket, ''))
     else:
@@ -90,19 +120,6 @@ def kill_session(socket, sessions):
             os.system('tmux -L "{}" kill-session -t "{}"'.format(socket, session))
     else:
         os.system('tmux -L "{}" kill-server'.format(socket))
-
-def list_sessions(sockets):
-    if not sockets:
-        os.system('lsof -U 2> /dev/null | sed -n "s/^tmux.*tmux-1000\\/\\([^\\ ]*\).*/\\1/p" | sort -u')
-    else:
-        for socket in sockets:
-            all_sockets = os.popen('lsof -U 2> /dev/null | sed -n "s/^tmux.*tmux-1000\\/\\({}\\).*/\\1/p" | sort -u'.format(
-                socket)).read().strip().split('\n')
-            if socket in all_sockets:
-                print('sessions into socket "{}"'.format(socket))
-                os.system('tmux -L "{}" ls'.format(socket))
-            else:
-                print('no such socket "{}"'.format(socket))
 
 def current_instance(instance):
     socket = os.popen('echo $TMUX | sed -n "s/.*tmux-1000\\/\\([^,]*\\).*/\\1/p"').read().strip()
