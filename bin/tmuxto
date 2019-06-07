@@ -39,6 +39,7 @@ def start_session(socket, sessions):
     projects_folder = Path.joinpath(Path.home(), 'Projects')
     project_folder = Path.joinpath(Path.home(), 'Projects/{}'.format(socket))
     config_template = '.tmux/tmux-{}{}.conf'
+    script_template = '.tmux/tmux-{}{}.sh'
     
     if not Path.exists(projects_folder):
         print('no such directory: {}'.format(projects_folder))
@@ -47,7 +48,7 @@ def start_session(socket, sessions):
     if not Path.exists(project_folder):
         print(os.mkdir(str(project_folder)))
 
-    def start(socket, session, folder, config_template):
+    def start(socket, session, folder, config_template, script_template):
         has_session = os.system('tmux -L "{}" has -t="{}" > /dev/null 2>&1'.format(socket, session)) == 0
 
         if has_session:
@@ -56,20 +57,26 @@ def start_session(socket, sessions):
             if Path.exists(folder):
                 os.chdir(str(folder))
             os.system('tmux -L "{}" new-session -d -s "{}" -n "shell"'.format(socket, session))
+            print('session "{}-{}" started'.format(socket, session))
 
             config_file = Path.joinpath(Path.home(), config_template.format(session))
-            if not Path.exists(config_file):
-                print('no such file "{}"'.format(str(config_file)))
-            else:
+            if Path.exists(config_file):
                 os.system('tmux -L "{}" source-file "{}"'.format(socket, str(config_file)))
-            print('session "{}" started'.format(session))
+
+            script_file = Path.joinpath(Path.home(), script_template.format(session))
+            if Path.exists(script_file):
+                print('runs {}'.format(str(script_file)))
+                os.system(str(script_file));
 
     if not sessions:
-        start(socket, socket, project_folder, config_template.format(socket, ''))
+        start(socket, socket, project_folder,
+                config_template.format(socket, ''),
+                script_template.format(socket, ''))
     else:
         for session in sessions:
             start(socket, session, Path.joinpath(project_folder, session),
-                    config_template.format(socket, '-{}'))
+                    config_template.format(socket, '-{}'),
+                    script_template.format(socket, '-{}'))
 
 def attach_session(socket, session):
     if session:
