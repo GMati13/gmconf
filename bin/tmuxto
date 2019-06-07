@@ -112,7 +112,7 @@ def attach_session(socket, session):
     if session:
         os.system('tmux -L "{}" attach-session -t "{}"'.format(socket, session))
     else:
-        os.system('tmux -L "{0}" attach-session -t "{0}"'.format(socket))
+        os.system('tmux -L "{}" attach-session -t "root"'.format(socket))
 
 def kill_session(socket, sessions):
     if sessions:
