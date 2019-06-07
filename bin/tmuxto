@@ -39,11 +39,11 @@ start_parser.add_argument('sessions', type=str, nargs='*')
 list_sockets = list_sessions()
 
 attach_parser = top_subparser.add_parser('attach')
-attach_parser.add_argument('socket', type=str, choices=list_sessions())
+attach_parser.add_argument('socket', type=str, choices=list_sockets)
 attach_parser.add_argument('session', type=str, nargs='?')
 
 kill_parser = top_subparser.add_parser('kill')
-kill_parser.add_argument('socket', type=str, choices=list_sessions())
+kill_parser.add_argument('socket', type=str, choices=list_sockets)
 kill_parser.add_argument('sessions', type=str, nargs='*')
 
 list_parser = top_subparser.add_parser('list')
