@@ -20,18 +20,6 @@ let mapleader = " "
         Plug 'w0rp/ale'
         Plug 'nvie/vim-flake8' " python
         Plug 'Quramy/tsuquyomi' " typescript
-    " }}}
-
-    " UI {{{
-        " Project tree
-        Plug 'scrooloose/nerdtree'
-        " Theme
-        Plug 'cocopon/iceberg.vim'
-        " Git
-        Plug 'tpope/vim-fugitive' " git
-        " Status line
-        Plug 'vim-airline/vim-airline'
-        Plug 'edkolev/tmuxline.vim'
         " highlight
         Plug 'pangloss/vim-javascript' " javascript
         Plug 'maxmellon/vim-jsx-pretty' " jsx
@@ -46,10 +34,22 @@ let mapleader = " "
         Plug 'heavenshell/vim-jsdoc' " javascript
     " }}}
 
+    " UI {{{
+        " Project tree
+        Plug 'scrooloose/nerdtree'
+        " Theme
+        Plug 'cocopon/iceberg.vim'
+        " Status line
+        Plug 'vim-airline/vim-airline'
+        Plug 'edkolev/tmuxline.vim'
+    " }}}
+
     " Project {{{
         " fuzzy finder
         Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
         Plug 'junegunn/fzf.vim'
+        " Git
+        Plug 'tpope/vim-fugitive' " git
     " }}}
 
     " Emacs plugin {{{
