@@ -1,0 +1,50 @@
+!You may want to run $ xrdb -merge ~/.Xresources with each update
+
+!Xft settings:
+
+Xft*dpi:       96
+Xft*hinting:   true
+! hintstyle 3 for flat-panel displays 
+Xft*hintstyle: 2
+Xft*antialias: true
+! uncomment/adjust for flat-panel display
+Xft*rgba:      rgb
+
+! URxvt settings
+URxvt*font:       xft:Noto Mono for Powerline:size=9:antialias=true:hinting=true:style=Regular
+URxvt*utf8:       1
+URxvt*utf8Title:  true
+URxvt*locale:     true
+URxvt*loginShell: true
+URxvt*scrollBar:  false
+URxvt.buffered:   true
+URxvt.termName:   rxvt-unicode-256color
+URxvt.geometry:   100x36
+
+URxvt*depth:       32
+URxvt*background:  rgba:0000/0000/0200/c800
+URxvt*transparent: true
+URxvt*shading:     15
+
+! *background:   #1c1c1c
+*foreground:   #eff0eb
+*cursorColor:  #9aedfe
+
+*color0:      #33303b
+*color8:      #4f4b58
+*color1:      #ff5c57
+*color9:      #ff5c57
+*color2:      #5af78e
+*color10:     #5af78e
+*color3:      #f3f99d
+*color11:     #f3f99d
+*color4:      #57c7ff
+*color12:     #57c7ff
+*color5:      #ff6ac1
+*color13:     #ff6ac1
+*color6:      #9aedfe
+*color14:     #9aedfe
+*color7:      #eff0eb
+*color15:     #eff0eb
+
+Xcursor.size: 16

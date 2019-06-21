@@ -238,7 +238,7 @@ let mapleader = " "
     set tabstop=4
     set shiftwidth=4
     set softtabstop=4
-    autocmd FileType html,css,typescript setlocal softtabstop=2 tabstop=2 shiftwidth=2
+    autocmd FileType html,css,scss,less,javascript,typescript setlocal softtabstop=2 tabstop=2 shiftwidth=2
     set smartindent
     set autoindent
     map <F7> mzgg=G`z
@@ -283,6 +283,8 @@ let mapleader = " "
     " split
     set splitbelow
     set splitright
+    nmap <c-w>V :vsplit<cr>
+    nmap <c-w>S :split<cr>
 
     " pressed keys
     set showcmd
