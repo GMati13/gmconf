@@ -1,0 +1,210 @@
+snippet document "Document" b
+\documentclass[a4paper,12pt]{article}
+\usepackage{color}
+\usepackage[T2A,T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english,ukrainian]{babel}
+\usepackage{tabularx}
+\begin{document}
+
+$0
+\end{document}
+endsnippet
+
+snippet title "Document header" b
+\title{${1:Title}}
+\author{${2:Mati Green}}
+\date{\today}
+\maketitle
+$0
+endsnippet
+
+snippet paragraph "Paragraph" b
+\paragraph{$1}$0
+endsnippet
+
+snippet subparagraph "Subparagraph" b
+\subparagraph{$1}$0
+endsnippet
+
+snippet section "Section" b
+\section{$1}$0
+endsnippet
+
+snippet subsection "Subsection" b
+\subsection{$1}$0
+endsnippet
+
+snippet subsubsection "Subsubsection" b
+\subsubsection{$1}$0
+endsnippet
+
+snippet label "Label" b
+\label{${1:labelname}}$0
+endsnippet
+
+snippet ref "Reference on label" i
+\ref{${1:labelname}}$0
+endsnippet
+
+snippet pageref "Page reference on label" i
+\pageref{${1:labelname}}$0
+endsnippet
+
+snippet newpage "New page" b
+\newpage
+$0
+endsnippet
+
+snippet pagenumbering "Page numbering" b
+\pagenumbering{${1:arabic}}
+$0
+endsnippet
+
+snippet textit "Font effect: Italic" i
+\textit{$1}$0
+endsnippet
+
+snippet textsl "Font effect: Slanted" i
+\textsl{$1}$0
+endsnippet
+
+snippet textsc "Font effect: Smallcaps" i
+\textsc{$1}$0
+endsnippet
+
+snippet textbf "Font effect: Bold" i
+\textbf{$1}$0
+endsnippet
+
+snippet texttt "Font effect: Teletype" i
+\texttt{$1}$0
+endsnippet
+
+snippet textsf "Font effect: Sans serif" i
+\textsf{$1}$0
+endsnippet
+
+snippet textrm "Font effect: Roman" i
+\textrm{$1}$0
+endsnippet
+
+snippet underline "Font effect: Undeline" i
+\underline{$1}$0
+endsnippet
+
+snippet red "Font color: red" i
+{\color{red}$1}$0
+endsnippet
+
+snippet green "Font color: green" i
+{\color{green}$1}$0
+endsnippet
+
+snippet blue "Font color: blue" i
+{\color{blue}$1}$0
+endsnippet
+
+snippet cyan "Font color: cyan" i
+{\color{cyan}$1}$0
+endsnippet
+
+snippet magenta "Font color: magenta" i
+{\color{magenta}$1}$0
+endsnippet
+
+snippet yellow "Font color: yellow" i
+{\color{yellow}$1}$0
+endsnippet
+
+snippet white "Font color: white" i
+{\color{white}$1}$0
+endsnippet
+
+snippet tiny "Font size: tiny" i
+{\tiny $1}$0
+endsnippet
+
+snippet "scriptsize" "Font size: scriptsize" i
+{\scriptsize $1}$0
+endsnippet
+
+snippet "footnotesize" "Font size: footnotesize" i
+{\footnotesize $1}$0
+endsnippet
+
+snippet small "Font size: small" i
+{\small $1}$0
+endsnippet
+
+snippet normalsize "Font size: normalsize" i
+{\normalsize $1}$0
+endsnippet
+
+snippet large "Font size: large" i
+{\large $1}$0
+endsnippet
+
+snippet Large "Font size: Large" i
+{\Large $1}$0
+endsnippet
+
+snippet LARGE "Font size: LARGE" i
+{\LARGE $1}$0
+endsnippet
+
+snippet huge "Font size: huge" i
+{\huge $1}$0
+endsnippet
+
+snippet enumerate "List type: enumerate" b
+\begin{enumerate}
+$1
+\end{enumerate}$0
+endsnippet
+
+snippet itemize "List type: itemize" b
+\begin{itemize}
+$1
+\end{itemize}$0
+endsnippet
+
+snippet item "Item of list" b
+{\item $1}$0
+endsnippet
+
+snippet table "Table" b
+\begin{center}
+\begin{tabularx}{\textwidth}{${1:align}}
+\hline
+${2:rows}
+\hline
+\end{tabularx}
+\end{center}$0
+endsnippet
+
+snippet multicolumn "Multicoulumn" i
+\multicolumn{${1:number cols}}{${2:align}}{${3:text}}$0
+endsnippet
+
+snippet multirow "Multirow" i
+\multirow{${1:number rows}}{${2:width}}{${3:text}}$0
+endsnippet
+
+snippet hline "Horizontal line" i
+\hline$0
+endsnippet
+
+snippet cline "Horysontal line between columns" i
+\cline{${1:columns}}$0
+endsnippet
+
+snippet vline "Vertical line" i
+\vline
+endsnippet
+
+snippet code "Code listing"
+\begin{lstlisting}${1:[language=${2:c++}]}
+$3
+\end{lstlisting}$0
+endsnippet

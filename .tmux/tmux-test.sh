@@ -1,1 +1,0 @@
-tmuxto start test lala

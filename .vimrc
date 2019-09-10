@@ -8,14 +8,13 @@ let mapleader = " "
         " autocomplete
         Plug 'Valloric/YouCompleteMe'
         Plug 'mattn/emmet-vim' " html css
+        Plug 'SirVer/ultisnips'
         " brackets
         Plug 'tpope/vim-surround'
         " SQL uppercase
         Plug 'alcesleo/vim-uppercase-sql' " sql
         " multicursor
         Plug 'terryma/vim-multiple-cursors'
-        " spelling
-        Plug 'reedes/vim-wordy'
         " linter
         Plug 'w0rp/ale'
         Plug 'nvie/vim-flake8' " python
@@ -32,6 +31,8 @@ let mapleader = " "
         Plug 'haya14busa/incsearch-easymotion.vim'
         " docs
         Plug 'heavenshell/vim-jsdoc' " javascript
+        " comments
+        Plug 'tomtom/tcomment_vim'
     " }}}
 
     " UI {{{
@@ -39,6 +40,11 @@ let mapleader = " "
         Plug 'scrooloose/nerdtree'
         " Theme
         Plug 'cocopon/iceberg.vim'
+        " Plug 'tomasr/molokai'
+        " Plug 'morhetz/gruvbox'
+        " Plug 'NLKNguyen/papercolor-theme'
+        " Plug 'ajmwagar/vim-deus'
+        " Plug 'arcticicestudio/nord-vim'
         " Status line
         Plug 'vim-airline/vim-airline'
         Plug 'edkolev/tmuxline.vim'
@@ -56,7 +62,27 @@ let mapleader = " "
         Plug 'jpalardy/vim-slime'
     " }}}
 
+    " Others {{{
+        Plug 'lervag/vimtex'
+        Plug 'ervandew/supertab'
+    " }}}
+
     call plug#end()
+
+    " UltiSnips {{{
+        let g:UltiSnipsExpandTrigger="<c-j>"
+        let g:UltiSnipsJumpForwardTrigger="<c-j>"
+        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+        let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+    " }}}
+
+    " vimtex {{{
+        let g:tex_flavor='latex'
+        let g:vimtex_view_method='zathura'
+        let g:vimtex_quickfix_mode=0
+        set conceallevel=1
+        let g:tex_conceal='abdmg'
+    " }}}
 
     " Theme {{{
         set t_Co=256
@@ -75,6 +101,7 @@ let mapleader = " "
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
         let g:NERDTreeDirArrowExpandable = '+'
         let g:NERDTreeDirArrowCollapsible = '-'
+        let g:NERDTreeWinSize = 40
         let NERDTreeQuitOnOpen=1
 
         " NERDTress File highlighting
@@ -108,20 +135,29 @@ let mapleader = " "
         let b:ale_linter_aliases = ['css', 'javascript']
         let b:ale_linters = ['stylelint', 'eslint']
 
-        nmap <leader>s :ALEGoToDefinition<cr>
-        nmap <leader>S :ALEGoToDefinitionInTab<cr>
-        nmap <leader>r :ALEFindReferences<cr>
+        nmap <leader>an :ALENext<cr>
+        nmap <leader>ap :ALEPrevious<cr>
+    " }}}
+
+    " tsuquyomi {{{
+        let g:tsuquyomi_disable_default_mappings = 1
+
+        nmap <leader>d :TsuDefinition<cr>
+        nmap <leader>r :TsuReferences<cr>
+        nmap <leader>b :TsuGoBack<cr>
     " }}}
 
     " FZF {{{
         command! -bang -nargs=* Ag call fzf#vim#grep('ag --nogroup --column --color ^', 1)
         nmap <leader>p :FZF<cr>
         nmap <leader>ag :Ag<cr>
+        nmap <leader>B :Buffers<cr>
+        nmap <leader>L :BLines<cr>
     " }}}
 
     " Tmuxline {{{
         let g:tmuxline_preset = {
-              \'a'    : '#(tmuxto current socket)',
+              \'a'    : '#(tmuxto current project)',
               \'b'    : '#S',
               \'c'    : '#W',
               \'win'  : '#I #W',
@@ -153,28 +189,13 @@ let mapleader = " "
 
     " YCM {{{
         let g:ycm_show_diagnostics_ui = 0
+        let g:ycm_key_list_select_completion = ['<tab>', '<Down>']
+        let g:ycm_key_list_previous_completion = ['<s-tab>', '<Up>']
+        " let g:SuperTabDefaultCompletionType = '<tab>'
     " }}}
 
     " Emmet {{{
         let g:user_emmet_leader_key='<C-y>'
-    " }}}
-
-    " Wordy (spelling) {{{
-        let g:wordy#ring = [
-          \ 'weak',
-          \ ['being', 'passive-voice', ],
-          \ 'business-jargon',
-          \ 'weasel',
-          \ 'puffery',
-          \ ['problematic', 'redundant', ],
-          \ ['colloquial', 'idiomatic', 'similies', ],
-          \ 'art-jargon',
-          \ ['contractions', 'opinion', 'vague-time', 'said-synonyms', ],
-          \ 'adjectives',
-          \ 'adverbs',
-          \ ]
-        nmap <leader>ww :Wordy problematic<cr>
-        nmap <leader>wn :NoWordy<cr>
     " }}}
 
     " JS Docs {{{
@@ -192,6 +213,7 @@ let mapleader = " "
 " Common {{{
     syntax on
     filetype plugin indent on
+    set nowrap
 
     " diff
     set diffopt+=vertical
@@ -204,15 +226,15 @@ let mapleader = " "
     " python
     let python_highlight_all = 1
 
-    " Transparency
-    hi Normal guibg=NONE ctermbg=NONE
-    hi NonText guibg=NONE ctermbg=NONE
-    hi EndOfBuffer guibg=NONE ctermbg=NONE
-    hi SpecialKey guibg=NONE ctermbg=NONE
-    hi ErrorMsg guibg=NONE ctermbg=NONE
-    hi WarningMsg guibg=NONE ctermbg=NONE
-    hi Error guibg=NONE ctermbg=NONE
-    hi Todo guibg=NONE ctermbg=NONE
+    " " Transparency
+    " hi Normal guibg=NONE ctermbg=NONE
+    " hi NonText guibg=NONE ctermbg=NONE
+    " hi EndOfBuffer guibg=NONE ctermbg=NONE
+    " hi SpecialKey guibg=NONE ctermbg=NONE
+    " hi ErrorMsg guibg=NONE ctermbg=NONE
+    " hi WarningMsg guibg=NONE ctermbg=NONE
+    " hi Error guibg=NONE ctermbg=NONE
+    " hi Todo guibg=NONE ctermbg=NONE
 
     " Clipboard
     set clipboard=unnamedplus
@@ -238,37 +260,41 @@ let mapleader = " "
     set tabstop=4
     set shiftwidth=4
     set softtabstop=4
-    autocmd FileType html,css,scss,less,javascript,typescript setlocal softtabstop=2 tabstop=2 shiftwidth=2
+    autocmd FileType html,css,scss,less,typescript setlocal softtabstop=2 tabstop=2 shiftwidth=2
     set smartindent
     set autoindent
     map <F7> mzgg=G`z
     map <F8> :%s/[ ]\{1,\}$//g<cr>
 
     " Tabs
-    nmap <c-t>n :tabnew<cr>
-    nmap <c-t>q :tabclose<cr>
-    nmap <c-t>Q :tabonly<cr>
-    nmap <c-t>h :tabprevious<cr>
-    nmap <c-t>k :tabprevious<cr>
-    nmap <c-t>j :tabnext<cr>
-    nmap <c-t>t :tabnext<cr>
-    nmap <c-t><c-t> :tabnext<cr>
-    nmap <c-t>l :tabnext<cr>
-    nmap <c-t>t :tabnext<cr>
+    nmap <leader>tn :tabnew<cr>
+    nmap <leader>tq :tabclose<cr>
+    nmap <leader>tQ :tabonly<cr>
+    nmap <leader>th :tabprevious<cr>
+    nmap <leader>tk :tabprevious<cr>
+    nmap <leader>tj :tabnext<cr>
+    nmap <leader>tl :tabnext<cr>
+    nmap <leader>tt :tabnext<cr>
 
     " Windows
-    nmap <c-h> :wincmd h<cr>
-    nmap <c-j> :wincmd j<cr>
-    nmap <c-k> :wincmd k<cr>
-    nmap <c-l> :wincmd l<cr>
+    set nowinfixwidth
+    set nowinfixheight
+    set winwidth=80
+    set winheight=1
+    set winminwidth=40
+    nmap <leader>h :wincmd h<cr>
+    nmap <leader>j :wincmd j<cr>
+    nmap <leader>k :wincmd k<cr>
+    nmap <leader>l :wincmd l<cr>
+    nmap <leader>z :set winwidth=150 winheight=40<cr>:wincmd =<cr>:set winwidth=80 winheight=1<cr>
+    nmap <leader>w <c-w>
 
     " search
     set incsearch
     nmap <leader><leader> :noh<cr>
 
-    " buffers
+    " Buffers
     command! BD %bd|e#
-    nmap <F9> :buffers<cr>:buffer<space>
     nmap <F9><F9> :b#<cr>
 
     " realtime update
@@ -283,8 +309,8 @@ let mapleader = " "
     " split
     set splitbelow
     set splitright
-    nmap <c-w>V :vsplit<cr>
-    nmap <c-w>S :split<cr>
+    nmap <leader>v :vsplit<cr>
+    nmap <leader>H :split<cr>
 
     " pressed keys
     set showcmd
@@ -298,6 +324,7 @@ let mapleader = " "
     inoremap <expr> >  strpart(getline('.'), col('.')-1, 1) == ">" ? "\<right>" : ">"
     inoremap { {}<left>
     inoremap {<cr> {<cr>}<esc>O
-    inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<right>" : "}"
+    inoremap <expr> <cr> strpart(getline('.'), col('.')-1, 1) == "}" ? "\<cr>\<esc>O" : "\<cr>"
+    inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<right>" : "}"
     inoremap <expr> <backspace> index(g:vim_editor_brackets, strpart(getline('.'), col('.')-2, 2)) > -1 ? "\<backspace>\<del>" : "\<backspace>"
 " }}}

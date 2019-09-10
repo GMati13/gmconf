@@ -1,0 +1,13 @@
+# snap bin
+export PATH=$PATH:/snap/bin
+# local bin
+export PATH=$PATH:$HOME/.local/bin
+
+# initial prompt
+source $HOME/.local/scripts/bash-prompt
+
+# use 2 version of tmux
+alias tmux='tmux -2'
+
+# for python completions in tmuxto
+eval "$(register-python-argcomplete tmuxto)"
