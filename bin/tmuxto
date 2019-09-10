@@ -22,52 +22,83 @@ def list_sessions(socket=''):
             print('no such socket "{}"'.format(socket))
 
 projects_folder = Path.joinpath(Path.home(), 'Projects')
-sockets = []
+projects = []
 
 for x in os.listdir(projects_folder):
     project_folder = Path.joinpath(projects_folder, x)
     if os.path.isdir(str(project_folder)):
-        sockets.append(x)
+        projects.append(x)
 
-top_parser = ArgumentParser(prog='tmuxto')
+projects.sort()
+
+def choices_project_completer(prefix, parsed_args, **kwargs):
+    return projects
+
+def choices_repo_completer(prefix, parsed_args, **kwargs):
+    global project_folder, projects
+
+    project = parsed_args.project
+    repos = []
+
+    if project not in projects:
+        return repos
+    
+    project_folder = Path.joinpath(projects_folder, project)
+
+    for x in os.listdir(project_folder):
+        repo_folder = Path.joinpath(project_folder, x)
+        if os.path.isdir(str(repo_folder)):
+            repos.append(x)
+
+    return repos
+
+top_parser = ArgumentParser(prog='tmuxto', add_help=False)
 
 top_subparser = top_parser.add_subparsers(title='action', dest='action', required=True)
 
-start_parser = top_subparser.add_parser('start')
-start_parser.add_argument('socket', type=str, choices=sockets)
-start_parser.add_argument('sessions', type=str, nargs='*')
+start_parser = top_subparser.add_parser('start', add_help=False)
+start_parser.add_argument('project', type=str, choices=projects)
+start_parser.add_argument('repos', type=str, nargs='*').completer = choices_repo_completer
 
 list_sockets = list_sessions()
 
-attach_parser = top_subparser.add_parser('attach')
-attach_parser.add_argument('socket', type=str, choices=list_sockets)
-attach_parser.add_argument('session', type=str, nargs='?')
+attach_parser = top_subparser.add_parser('attach', add_help=False)
+attach_parser.add_argument('project', type=str, choices=list_sockets)
+attach_parser.add_argument('repo', type=str, nargs='?').completer = choices_repo_completer
 
-kill_parser = top_subparser.add_parser('kill')
-kill_parser.add_argument('socket', type=str, choices=list_sockets)
-kill_parser.add_argument('sessions', type=str, nargs='*')
+kill_parser = top_subparser.add_parser('kill', add_help=False)
+kill_parser.add_argument('project', type=str, choices=list_sockets)
+kill_parser.add_argument('repos', type=str, nargs='*').completer = choices_repo_completer
 
-list_parser = top_subparser.add_parser('list')
+list_parser = top_subparser.add_parser('active', add_help=False)
 list_parser.add_argument('sockets', type=str, nargs='?', choices=list_sockets)
 
-current_parser = top_subparser.add_parser('current')
-current_parser.add_argument('instance', type=str, nargs='?', choices=['socket', 'session'])
+list_parser = top_subparser.add_parser('projects', add_help=False)
 
-create_parser = top_subparser.add_parser('create')
-create_parser.add_argument('project', type=str)
-create_parser.add_argument('repos', type=str, nargs="*")
+current_parser = top_subparser.add_parser('current', add_help=False)
+current_parser.add_argument('instance', type=str, nargs='?', choices=['project', 'repo'])
+
+create_parser = top_subparser.add_parser('create', add_help=False)
+create_parser.add_argument('project', type=str).completer = choices_project_completer
+create_parser.add_argument('repos', type=str, nargs='*').completer = choices_repo_completer
+
+remove_parser = top_subparser.add_parser('remove', add_help=False)
+remove_parser.add_argument('project', type=str, choices=projects)
+remove_parser.add_argument('repos', type=str, nargs='*').completer = choices_repo_completer
 
 argcomplete.autocomplete(top_parser)
 
 parsed_args = top_parser.parse_args()
 
 do_action = {
-    'start': lambda: start_session(parsed_args.socket, parsed_args.sessions),
-    'attach': lambda: attach_session(parsed_args.socket, parsed_args.session),
-    'kill': lambda: kill_session(parsed_args.socket, parsed_args.sessions),
-    'list': lambda: list_sessions(parsed_args.sockets),
+    'start': lambda: start_session(parsed_args.project, parsed_args.repos),
+    'attach': lambda: attach_session(parsed_args.project, parsed_args.repo),
+    'kill': lambda: kill_session(parsed_args.project, parsed_args.repos),
+    'active': lambda: list_sessions(parsed_args.sockets),
     'current': lambda: current_instance(parsed_args.instance),
-    'create': lambda: create_project(parsed_args.project, parsed_args.repos)
+    'create': lambda: create_project(parsed_args.project, parsed_args.repos),
+    'remove': lambda: remove_project(parsed_args.project, parsed_args.repos),
+    'projects': lambda: projects_list()
 }
 
 def start_session(socket, sessions):
@@ -92,7 +123,7 @@ def start_session(socket, sessions):
         else:
             if Path.exists(folder):
                 os.chdir(str(folder))
-            os.system('tmux -L "{}" new-session -d -s "{}" -n "shell"'.format(socket, session))
+            os.system('tmux -L "{}" new-session -d -s "{}" -n "terminals"'.format(socket, session))
             print('session "{}-{}" started'.format(socket, session))
 
             config_file = Path.joinpath(Path.home(), config_template.format(session))
@@ -130,9 +161,9 @@ def kill_session(socket, sessions):
 def current_instance(instance):
     socket = os.popen('echo $TMUX | sed -n "s/.*tmux-1000\\/\\([^,]*\\).*/\\1/p"').read().strip()
     session = os.popen('tmux display-message -p "#S"').read().strip()
-    if instance == 'socket':
+    if instance == 'project':
         print(socket)
-    elif instance == 'session':
+    elif instance == 'repo':
         print(session)
     else:
         if socket == session:
@@ -143,13 +174,15 @@ def current_instance(instance):
 def create_project(project_name, repos):
     global projects_folder
 
-    config_template = '.tmux/tmux-{}.conf'
-    script_template = '.tmux/tmux-{}.sh'
-    f = open(str(Path.joinpath(Path.home(), config_template.format(project_name))), 'w+')
-    f.close()
-    script_file = str(Path.joinpath(Path.home(), script_template.format(project_name)))
-    f = open(script_file, 'w+')
-    f.close()
+    config_file = Path.joinpath(Path.home(), '.tmux/tmux-{}.conf'.format(project_name))
+    script_file = Path.joinpath(Path.home(), '.tmux/tmux-{}.sh'.format(project_name))
+    
+    if not Path.exists(config_file):
+        open(str(config_file), 'w').close()
+
+    if not Path.exists(script_file):
+        open(str(script_file), 'w').close()
+
     st = os.stat(script_file)
     os.chmod(script_file, st.st_mode | stat.S_IEXEC)
     
@@ -159,14 +192,87 @@ def create_project(project_name, repos):
         os.mkdir(str(project_folder))
 
     config_template = '.tmux/tmux-{}{}.conf'.format(project_name, '-{}')
+
     with open(script_file, 'a') as f:
         for repo in repos:
-            f.write('tmuxto start {} {}'.format(project_name, repo))
-            with open(str(Path.joinpath(Path.home(), config_template.format(repo))), 'w+') as _f:
+            f.write('tmuxto start {} {}\n'.format(project_name, repo))
+            with open(str(Path.joinpath(Path.home(), config_template.format(repo))), 'w') as _f:
                 _f.write('split-window -h\n\n')
-                _f.write('new-window -n \'edit\'\n')
+                _f.write('new-window -n \'editor\'\n')
                 _f.write('send-keys \'vim\' enter\n')
                 _f.close()
         f.close()
+    os.system('echo "$(cat {0} | uniq)" > {0}'.format(script_file))
+
+def remove_project(project_name, repos):
+    global projects_folder
+
+    script_file = Path.joinpath(Path.home(), '.tmux/tmux-{}.sh'.format(project_name))
+
+    if not repos:
+        project_folder = Path.joinpath(projects_folder, project_name)
+
+        with open(str(script_file), 'r') as f:
+            config_template = '.tmux/tmux-{}{}.conf'.format(project_name, '-{}')
+
+            line = str(f.readline()).strip()
+            while line:
+                repo = line.split(' ')[-1]
+
+                repo_folder = Path.joinpath(project_folder, repo)
+                config_file = Path.joinpath(Path.home(), config_template.format(repo))
+
+                if Path.exists(repo_folder) and Path.is_dir(repo_folder):
+                    os.rmdir(str(repo_folder))
+                if Path.exists(config_file) and Path.is_file(config_file):
+                    os.remove(str(config_file))
+
+                line = str(f.readline()).strip()
+
+        config_file = Path.joinpath(Path.home(), '.tmux/tmux-{}.conf'.format(project_name))
+
+        if Path.exists(project_folder) and Path.is_dir(project_folder):
+            os.rmdir(str(project_folder))
+        if Path.exists(config_file) and Path.is_file(config_file):
+            os.remove(str(config_file))
+        if Path.exists(script_file) and Path.is_file(script_file):
+            os.remove(str(script_file))
+    else:
+        config_template = '.tmux/tmux-{}{}.conf'.format(project_name, '-{}')
+        project_folder = Path.joinpath(projects_folder, project_name)
+
+        for repo in repos:
+            is_before = True
+            before = []
+            after = []
+            command = 'tmuxto start {} {}\n'.format(project_name, repo)
+            with open(str(script_file), 'r') as f:
+                line = f.readline()
+                while line:
+                    if line == command:
+                        is_before = False
+                    else:
+                        if is_before:
+                            before.append(line)
+                        else:
+                            after.append(line)
+                    line = f.readline()
+            with open(str(script_file), 'w') as f:
+                for line in before:
+                    f.write(line)
+                for line in after:
+                    f.write(line)
+
+            config_file = Path.joinpath(Path.home(), config_template.format(repo))
+            repo_folder = Path.joinpath(project_folder, repo)
+
+            if Path.exists(repo_folder) and Path.is_dir(repo_folder):
+                os.rmdir(str(repo_folder))
+            if Path.exists(config_file) and Path.is_file(config_file):
+                os.remove(str(config_file))
+
+def projects_list():
+    for project in projects:
+        print(project)
 
 do_action[parsed_args.action]()
