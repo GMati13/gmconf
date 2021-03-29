@@ -8,5 +8,5 @@ python3.7 -m pip install argcomplete --user
 
 add into `.bashrc` or `.zshrc`
 ```
-eval "$(register-python-argcomplete tmuxto)a
+eval "$(register-python-argcomplete tmuxto)"
 ```
