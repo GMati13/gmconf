@@ -6,15 +6,14 @@ import stat
 import argcomplete
 
 def list_sessions(socket=''):
+    sockets = os.popen('lsof -U 2> /dev/null | grep -E "^.*?tmux.*?`ls -1 /tmp/tmux-1000/ | paste -sd \'|\' -`.*?$" | sed -E "s/^.*?(`ls -1 /tmp/tmux-1000/ | paste -sd \'|\' -`).*?$/\\1/g" | sort -u').read().strip();
     if not socket:
-        sessions = os.popen('lsof -U 2> /dev/null | sed -n "s/^tmux.*tmux-1000\\/\\([^\\ ]*\).*/\\1/p" | sort -u').read().strip();
         if socket != '':
-            print(sessions)
+            print(sockets)
         else:
-            return sessions.split('\n')
+            return sockets.split('\n')
     else:
-        all_sockets = os.popen('lsof -U 2> /dev/null | sed -n "s/^tmux.*tmux-1000\\/\\({}\\).*/\\1/p" | sort -u'.format(
-            socket)).read().strip().split('\n')
+        all_sockets = sockets.split('\n')
         if socket in all_sockets:
             print('sessions into socket "{}"'.format(socket))
             os.system('tmux -L "{}" ls'.format(socket))
@@ -198,8 +197,6 @@ def create_project(project_name, repos):
             f.write('tmuxto start {} {}\n'.format(project_name, repo))
             with open(str(Path.joinpath(Path.home(), config_template.format(repo))), 'w') as _f:
                 _f.write('split-window -h\n\n')
-                _f.write('new-window -n \'editor\'\n')
-                _f.write('send-keys \'vim\' enter\n')
                 _f.close()
         f.close()
     os.system('echo "$(cat {0} | uniq)" > {0}'.format(script_file))
